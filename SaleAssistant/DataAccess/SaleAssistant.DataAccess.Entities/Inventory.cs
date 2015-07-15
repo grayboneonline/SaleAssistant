@@ -5,13 +5,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace SaleAssistant.Models
+namespace SaleAssistant.DataAccess.Entities
 {
     public class Inventory
     {
         public Guid Id { get; set; }
 
-        [Required]
+        [Required, MaxLength(200)]
         public string Name { get; set; }
 
         public InventoryStatus Status { get; set; }

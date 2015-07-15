@@ -198,24 +198,13 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\InventoriesController.cs" />
-    <Compile Include="Controllers\InventoryDetailsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201507151544274_Initial.cs" />
-    <Compile Include="Migrations\201507151544274_Initial.Designer.cs">
-      <DependentUpon>201507151544274_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Inventory.cs" />
-    <Compile Include="Models\InventoryDetail.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\SaleAssistantContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -288,9 +277,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507151544274_Initial.resx">
-      <DependentUpon>201507151544274_Initial.cs</DependentUpon>
-    </EmbeddedResource>
+    <ProjectReference Include="..\DataAccess\SaleAssistant.DataAccess\SaleAssistant.DataAccess.csproj">
+      <Project>{3317d1e9-4a8e-48cd-a548-18301e1da6ed}</Project>
+      <Name>SaleAssistant.DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -15,120 +15,120 @@ namespace SaleAssistant.Controllers
 {
     public class ProductsController : ApiController
     {
-        private SaleAssistantContext db = new SaleAssistantContext();
+        //private SaleAssistantContext db = new SaleAssistantContext();
 
-        // GET: api/Products
-        public IQueryable<Product> GetProducts()
-        {
-            return db.Products;
-        }
+        //// GET: api/Products
+        //public IQueryable<Product> GetProducts()
+        //{
+        //    return db.Products;
+        //}
 
-        // GET: api/Products/5
-        [ResponseType(typeof(Product))]
-        public async Task<IHttpActionResult> GetProduct(Guid id)
-        {
-            Product product = await db.Products.FindAsync(id);
-            if (product == null)
-            {
-                return NotFound();
-            }
+        //// GET: api/Products/5
+        //[ResponseType(typeof(Product))]
+        //public async Task<IHttpActionResult> GetProduct(Guid id)
+        //{
+        //    Product product = await db.Products.FindAsync(id);
+        //    if (product == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return Ok(product);
-        }
+        //    return Ok(product);
+        //}
 
-        // PUT: api/Products/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutProduct(Guid id, Product product)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// PUT: api/Products/5
+        //[ResponseType(typeof(void))]
+        //public async Task<IHttpActionResult> PutProduct(Guid id, Product product)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != product.Id)
-            {
-                return BadRequest();
-            }
+        //    if (id != product.Id)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            db.Entry(product).State = EntityState.Modified;
+        //    db.Entry(product).State = EntityState.Modified;
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProductExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await db.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!ProductExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
-        // POST: api/Products
-        [ResponseType(typeof(Product))]
-        public async Task<IHttpActionResult> PostProduct(Product product)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// POST: api/Products
+        //[ResponseType(typeof(Product))]
+        //public async Task<IHttpActionResult> PostProduct(Product product)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.Products.Add(product);
+        //    db.Products.Add(product);
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (ProductExists(product.Id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await db.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateException)
+        //    {
+        //        if (ProductExists(product.Id))
+        //        {
+        //            return Conflict();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return CreatedAtRoute("DefaultApi", new { id = product.Id }, product);
-        }
+        //    return CreatedAtRoute("DefaultApi", new { id = product.Id }, product);
+        //}
 
-        // DELETE: api/Products/5
-        [ResponseType(typeof(Product))]
-        public async Task<IHttpActionResult> DeleteProduct(Guid id)
-        {
-            Product product = await db.Products.FindAsync(id);
-            if (product == null)
-            {
-                return NotFound();
-            }
+        //// DELETE: api/Products/5
+        //[ResponseType(typeof(Product))]
+        //public async Task<IHttpActionResult> DeleteProduct(Guid id)
+        //{
+        //    Product product = await db.Products.FindAsync(id);
+        //    if (product == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.Products.Remove(product);
-            await db.SaveChangesAsync();
+        //    db.Products.Remove(product);
+        //    await db.SaveChangesAsync();
 
-            return Ok(product);
-        }
+        //    return Ok(product);
+        //}
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
 
-        private bool ProductExists(Guid id)
-        {
-            return db.Products.Count(e => e.Id == id) > 0;
-        }
+        //private bool ProductExists(Guid id)
+        //{
+        //    return db.Products.Count(e => e.Id == id) > 0;
+        //}
     }
 }

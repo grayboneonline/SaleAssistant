@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace SaleAssistant.Models
+namespace SaleAssistant.DataAccess.Entities
 {
     public class InventoryDetail
     {

@@ -5,6 +5,20 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaleAssistant", "SaleAssistant\SaleAssistant.csproj", "{8EB90A6B-796C-4211-A42E-A36A75CA3D7B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{E8100F41-9E8F-4A03-91BF-9486C6218CE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaleAssistant.DataAccess.Entities", "DataAccess\SaleAssistant.DataAccess.Entities\SaleAssistant.DataAccess.Entities.csproj", "{561D63CB-4F3B-40F0-8BF2-3ECE05A2816A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaleAssistant.DataAccess", "DataAccess\SaleAssistant.DataAccess\SaleAssistant.DataAccess.csproj", "{3317D1E9-4A8E-48CD-A548-18301E1DA6ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.DataAccess", "DataAccess\Core.DataAccess\Core.DataAccess.csproj", "{BCAB63D8-95B4-461D-9715-2A0A10FDAB09}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{1F9B28B3-F6B7-4EB0-BD7A-604C67FBFA30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaleAssistant.Business", "Business\SaleAssistant.Business\SaleAssistant.Business.csproj", "{CDBB2239-5874-47E0-B0DE-F36C9ABB58E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaleAssistant.Business.Models", "Business\SaleAssistant.Business.Models\SaleAssistant.Business.Models.csproj", "{24A50CBB-8EAB-4F47-8A19-FF1983E4A387}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,8 +29,35 @@ Global
 		{8EB90A6B-796C-4211-A42E-A36A75CA3D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EB90A6B-796C-4211-A42E-A36A75CA3D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EB90A6B-796C-4211-A42E-A36A75CA3D7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{561D63CB-4F3B-40F0-8BF2-3ECE05A2816A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{561D63CB-4F3B-40F0-8BF2-3ECE05A2816A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{561D63CB-4F3B-40F0-8BF2-3ECE05A2816A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{561D63CB-4F3B-40F0-8BF2-3ECE05A2816A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3317D1E9-4A8E-48CD-A548-18301E1DA6ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3317D1E9-4A8E-48CD-A548-18301E1DA6ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3317D1E9-4A8E-48CD-A548-18301E1DA6ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3317D1E9-4A8E-48CD-A548-18301E1DA6ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCAB63D8-95B4-461D-9715-2A0A10FDAB09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCAB63D8-95B4-461D-9715-2A0A10FDAB09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCAB63D8-95B4-461D-9715-2A0A10FDAB09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCAB63D8-95B4-461D-9715-2A0A10FDAB09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDBB2239-5874-47E0-B0DE-F36C9ABB58E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDBB2239-5874-47E0-B0DE-F36C9ABB58E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDBB2239-5874-47E0-B0DE-F36C9ABB58E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDBB2239-5874-47E0-B0DE-F36C9ABB58E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24A50CBB-8EAB-4F47-8A19-FF1983E4A387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24A50CBB-8EAB-4F47-8A19-FF1983E4A387}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24A50CBB-8EAB-4F47-8A19-FF1983E4A387}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24A50CBB-8EAB-4F47-8A19-FF1983E4A387}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{561D63CB-4F3B-40F0-8BF2-3ECE05A2816A} = {E8100F41-9E8F-4A03-91BF-9486C6218CE0}
+		{3317D1E9-4A8E-48CD-A548-18301E1DA6ED} = {E8100F41-9E8F-4A03-91BF-9486C6218CE0}
+		{BCAB63D8-95B4-461D-9715-2A0A10FDAB09} = {E8100F41-9E8F-4A03-91BF-9486C6218CE0}
+		{CDBB2239-5874-47E0-B0DE-F36C9ABB58E0} = {1F9B28B3-F6B7-4EB0-BD7A-604C67FBFA30}
+		{24A50CBB-8EAB-4F47-8A19-FF1983E4A387} = {1F9B28B3-F6B7-4EB0-BD7A-604C67FBFA30}
 	EndGlobalSection
 EndGlobal
