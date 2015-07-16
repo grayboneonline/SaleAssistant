@@ -1,7 +1,10 @@
-﻿using Core.Data;
-
-namespace SaleAssistant.DataAccess
+﻿namespace SaleAssistant.DataAccess
 {
+    public interface IConfig
+    {
+        string ConnectionString { get; set; }
+    }
+
     public class Config : IConfig
     {
         public string ConnectionString { get; set; }

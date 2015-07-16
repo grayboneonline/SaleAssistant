@@ -47,14 +47,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\Core.Data.EF\Core.Data.EF.csproj">
-      <Project>{4dad354d-d258-4353-8dea-7f0a240cc312}</Project>
-      <Name>Core.Data.EF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Core\Core.Data\Core.Data.csproj">
-      <Project>{806891d8-1565-4d02-9593-22ecece32584}</Project>
-      <Name>Core.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SaleAssistant.DataAccess.Entities\SaleAssistant.DataAccess.Entities.csproj">
       <Project>{561d63cb-4f3b-40f0-8bf2-3ece05a2816a}</Project>
       <Name>SaleAssistant.DataAccess.Entities</Name>

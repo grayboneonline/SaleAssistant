@@ -1,12 +1,16 @@
 ﻿using System.Data.Entity;
-using Core.Data;
 using SaleAssistant.DataAccess.Entities;
 
 namespace SaleAssistant.DataAccess
 {
-    public class SaleAssistantDbContext : Core.Data.EF.DbContext
+    public class SaleAssistantDbContext : DbContext
     {
-        public SaleAssistantDbContext(IConfig config) : base(config) { }
+        protected IConfig Config { get; private set; }
+
+        public SaleAssistantDbContext(IConfig config) : base(config.ConnectionString)
+        {
+            Config = config;
+        }
 
         public DbSet<Product> Products { get; set; }
 
