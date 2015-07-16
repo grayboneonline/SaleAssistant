@@ -1,4 +1,4 @@
-﻿using Core.DataAccess;
+﻿using Core.Data;
 
 namespace SaleAssistant.DataAccess
 {
@@ -8,7 +8,7 @@ namespace SaleAssistant.DataAccess
 
         public static IConfig DevEnvironment
         {
-            get { return new Config { ConnectionString = "Data Source=.;Initial Catalog=SaleAssistant;Integrated Security=True" }; }
+            get { return new Config { ConnectionString = "Data Source=.;Initial Catalog=SaleAssistant;User ID=sa;Password=sa123" }; }
         }
     }
 }

@@ -10,12 +10,14 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using SaleAssistant.Models;
+using SaleAssistant.DataAccess;
+using SaleAssistant.DataAccess.Entities;
 
 namespace SaleAssistant.Controllers
 {
     public class ProductsController : ApiController
     {
-        //private SaleAssistantContext db = new SaleAssistantContext();
+        private SaleAssistantDbContext db = new SaleAssistantDbContext();
 
         //// GET: api/Products
         //public IQueryable<Product> GetProducts()
@@ -23,18 +25,20 @@ namespace SaleAssistant.Controllers
         //    return db.Products;
         //}
 
-        //// GET: api/Products/5
-        //[ResponseType(typeof(Product))]
-        //public async Task<IHttpActionResult> GetProduct(Guid id)
-        //{
-        //    Product product = await db.Products.FindAsync(id);
-        //    if (product == null)
-        //    {
-        //        return NotFound();
-        //    }
+        // GET: api/Products/5
+        [ResponseType(typeof(Product))]
+        public IHttpActionResult GetProduct(Guid id)
+        {
+            IProductDA productDa = new ProductDA(db);
+            Product product = productDa.GetProductById(id);
 
-        //    return Ok(product);
-        //}
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(product);
+        }
 
         //// PUT: api/Products/5
         //[ResponseType(typeof(void))]

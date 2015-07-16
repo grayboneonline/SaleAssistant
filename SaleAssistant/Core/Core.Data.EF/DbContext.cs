@@ -1,4 +1,4 @@
-﻿namespace Core.DataAccess
+﻿namespace Core.Data.EF
 {
     public class DbContext : System.Data.Entity.DbContext
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core.DataAccess
+namespace Core.Data
 {
     public interface IConfig
     {

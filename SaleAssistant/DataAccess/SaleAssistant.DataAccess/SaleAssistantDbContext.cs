@@ -1,18 +1,24 @@
 ﻿using System;
-using Core.DataAccess;
+using System.Data.Entity;
 using SaleAssistant.DataAccess.Entities;
+using System.Reflection;
 
 namespace SaleAssistant.DataAccess
 {
-    public class SaleAssistantDbContext : DbContext
+    public class SaleAssistantDbContext : Core.Data.EF.DbContext
     {
         public SaleAssistantDbContext() : base(Config.DevEnvironment) { }
 
-        public System.Data.Entity.DbSet<Product> Products { get; set; }
+        public DbSet<Product> Products { get; set; }
 
-        public System.Data.Entity.DbSet<Inventory> Inventories { get; set; }
+        //public System.Data.Entity.DbSet<Inventory> Inventories { get; set; }
 
-        public System.Data.Entity.DbSet<InventoryDetail> InventoryDetails { get; set; }
-    
+        //public System.Data.Entity.DbSet<InventoryDetail> InventoryDetails { get; set; }
+
+        protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
+        {
+            //base.OnModelCreating(modelBuilder);
+            modelBuilder.Configurations.AddFromAssembly(typeof(SaleAssistant.DataAccess.Mapping.ProductMap).Assembly);
+        }
     }
 }
