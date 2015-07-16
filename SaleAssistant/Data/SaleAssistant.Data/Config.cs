@@ -1,4 +1,4 @@
-﻿namespace SaleAssistant.DataAccess
+﻿namespace SaleAssistant.Data
 {
     public interface IConfig
     {

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
-using SaleAssistant.DataAccess.Entities;
+using SaleAssistant.Data.Entities;
 
-namespace SaleAssistant.DataAccess.Mapping
+namespace SaleAssistant.Data.Mapping
 {
     public class ProductMap : EntityTypeConfiguration<Product>
     {

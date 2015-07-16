@@ -1,11 +1,7 @@
-﻿using System;
-
-namespace SaleAssistant.DataAccess.Entities
+﻿namespace SaleAssistant.Data.Entities
 {
-    public class Product
+    public class Product : Entity
     {
-        public Guid Id { get; set; }
-
         public string Name { get; set; }
         
         public string Code { get; set; }

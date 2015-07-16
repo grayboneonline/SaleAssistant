@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
-using SaleAssistant.DataAccess.Entities;
+using SaleAssistant.Data.Entities;
 
-namespace SaleAssistant.DataAccess
+namespace SaleAssistant.Data
 {
     public class SaleAssistantDbContext : DbContext
     {

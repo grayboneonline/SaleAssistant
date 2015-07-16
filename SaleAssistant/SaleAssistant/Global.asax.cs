@@ -1,16 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Autofac;
+using Autofac.Integration.WebApi;
+using System.Reflection;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Autofac;
+using SaleAssistant.AutoMapper;
+using SaleAssistant.Business;
+using SaleAssistant.Controllers;
+using SaleAssistant.Data;
+using SaleAssistant.DataAccess;
 
 namespace SaleAssistant
 {
-    public class WebApiApplication : System.Web.HttpApplication
+    public class WebApiApplication : HttpApplication
     {
         private static IContainer Container { get; set; }
 
@@ -21,13 +25,32 @@ namespace SaleAssistant
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            AutofacRegister();
+
+            DomainMappingRegister.Register();
         }
 
         private void AutofacRegister()
         {
-            var builder = new ContainerBuilder();
-            
+            ContainerBuilder builder = new ContainerBuilder();
+
+            builder.Register<IConfig>(c => Config.DevEnvironment).SingleInstance();
+            builder.RegisterType<SaleAssistantDbContext>().AsSelf().SingleInstance();
+            builder.RegisterType<ProductDA>().AsImplementedInterfaces().SingleInstance();
+            builder.RegisterType<ProductManagement>().AsImplementedInterfaces().SingleInstance();
+
+            HttpConfiguration config = GlobalConfiguration.Configuration;
+
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+
+            // OPTIONAL: Register the Autofac filter provider.
+            //builder.RegisterWebApiFilterProvider(config);
+
+
+
             Container = builder.Build();
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(Container);
         }
     }
 }

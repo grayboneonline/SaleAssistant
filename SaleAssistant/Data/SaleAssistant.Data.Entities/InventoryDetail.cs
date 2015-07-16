@@ -1,11 +1,9 @@
 ﻿using System;
 
-namespace SaleAssistant.DataAccess.Entities
+namespace SaleAssistant.Data.Entities
 {
-    public class InventoryDetail
+    public class InventoryDetail : Entity
     {
-        public Guid Id { get; set; }
-
         public Guid InventoryId { get; set; }
 
         public Inventory Inventory { get; set; }

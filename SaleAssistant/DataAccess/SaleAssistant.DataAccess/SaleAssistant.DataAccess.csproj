@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3317D1E9-4A8E-48CD-A548-18301E1DA6ED}</ProjectGuid>
+    <ProjectGuid>{393224EC-EADA-4895-BFE0-E176906AE14E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SaleAssistant.DataAccess</RootNamespace>
@@ -33,28 +33,35 @@
     <Reference Include="EntityFramework">
       <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config.cs" />
     <Compile Include="ProductDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SaleAssistantDbContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\SaleAssistant.Data.Entities\SaleAssistant.Data.Entities.csproj">
+      <Project>{243788c7-491b-4556-8697-3ffb0fe1e454}</Project>
+      <Name>SaleAssistant.Data.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\SaleAssistant.Data\SaleAssistant.Data.csproj">
+      <Project>{edb574d2-f1df-4891-8443-2ae18cfcd9f9}</Project>
+      <Name>SaleAssistant.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SaleAssistant.DataAccess.Entities\SaleAssistant.DataAccess.Entities.csproj">
-      <Project>{561d63cb-4f3b-40f0-8bf2-3ece05a2816a}</Project>
-      <Name>SaleAssistant.DataAccess.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SaleAssistant.DataAccess.Mapping\SaleAssistant.DataAccess.Mapping.csproj">
-      <Project>{9f7d4a89-8139-43e5-a93c-ff1233146a03}</Project>
-      <Name>SaleAssistant.DataAccess.Mapping</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

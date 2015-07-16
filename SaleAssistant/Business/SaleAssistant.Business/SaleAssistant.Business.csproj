@@ -30,33 +30,38 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ProductManagement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DataAccess\SaleAssistant.DataAccess.Entities\SaleAssistant.DataAccess.Entities.csproj">
-      <Project>{561d63cb-4f3b-40f0-8bf2-3ece05a2816a}</Project>
-      <Name>SaleAssistant.DataAccess.Entities</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\DataAccess\SaleAssistant.DataAccess\SaleAssistant.DataAccess.csproj">
-      <Project>{3317d1e9-4a8e-48cd-a548-18301e1da6ed}</Project>
+      <Project>{393224ec-eada-4895-bfe0-e176906ae14e}</Project>
       <Name>SaleAssistant.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\SaleAssistant.Data.Entities\SaleAssistant.Data.Entities.csproj">
+      <Project>{243788c7-491b-4556-8697-3ffb0fe1e454}</Project>
+      <Name>SaleAssistant.Data.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\SaleAssistant.Business.Models\SaleAssistant.Business.Models.csproj">
       <Project>{24a50cbb-8eab-4f47-8a19-ff1983e4a387}</Project>
       <Name>SaleAssistant.Business.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

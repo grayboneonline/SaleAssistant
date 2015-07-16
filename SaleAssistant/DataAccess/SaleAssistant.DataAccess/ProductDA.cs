@@ -1,7 +1,8 @@
-﻿using SaleAssistant.DataAccess.Entities;
+﻿using System.Data.Entity;
+using SaleAssistant.Data;
+using SaleAssistant.Data.Entities;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 
 namespace SaleAssistant.DataAccess

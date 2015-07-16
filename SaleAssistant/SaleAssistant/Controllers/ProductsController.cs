@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using SaleAssistant.Business;
+using SaleAssistant.Business.Models;
+using System;
 using System.Web.Http;
 using System.Web.Http.Description;
-using SaleAssistant.Models;
-using SaleAssistant.DataAccess;
-using SaleAssistant.DataAccess.Entities;
 
 namespace SaleAssistant.Controllers
 {
     public class ProductsController : ApiController
     {
-        private SaleAssistantDbContext db = new SaleAssistantDbContext(new Config());
+        private readonly IProductManagement productManagement;
+
+        public ProductsController(IProductManagement productManagement)
+        {
+            this.productManagement = productManagement;
+        }
 
         //// GET: api/Products
         //public IQueryable<Product> GetProducts()
@@ -29,8 +25,7 @@ namespace SaleAssistant.Controllers
         [ResponseType(typeof(Product))]
         public IHttpActionResult GetProduct(Guid id)
         {
-            IProductDA productDa = new ProductDA(db);
-            Product product = productDa.GetProductById(id);
+            Product product = productManagement.GetProductById(id);
 
             if (product == null)
             {

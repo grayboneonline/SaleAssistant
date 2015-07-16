@@ -42,6 +42,9 @@
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac.Integration.WebApi">
+      <HintPath>..\packages\Autofac.WebApi2.3.4.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -284,13 +287,25 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\SaleAssistant.DataAccess.Entities\SaleAssistant.DataAccess.Entities.csproj">
-      <Project>{561d63cb-4f3b-40f0-8bf2-3ece05a2816a}</Project>
-      <Name>SaleAssistant.DataAccess.Entities</Name>
+    <ProjectReference Include="..\Business\SaleAssistant.AutoMapper\SaleAssistant.AutoMapper.csproj">
+      <Project>{60320E6F-6436-4787-91CF-380ADF0547AA}</Project>
+      <Name>SaleAssistant.AutoMapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Business\SaleAssistant.Business.Models\SaleAssistant.Business.Models.csproj">
+      <Project>{24A50CBB-8EAB-4F47-8A19-FF1983E4A387}</Project>
+      <Name>SaleAssistant.Business.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Business\SaleAssistant.Business\SaleAssistant.Business.csproj">
+      <Project>{CDBB2239-5874-47E0-B0DE-F36C9ABB58E0}</Project>
+      <Name>SaleAssistant.Business</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataAccess\SaleAssistant.DataAccess\SaleAssistant.DataAccess.csproj">
-      <Project>{3317d1e9-4a8e-48cd-a548-18301e1da6ed}</Project>
+      <Project>{393224EC-EADA-4895-BFE0-E176906AE14E}</Project>
       <Name>SaleAssistant.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\SaleAssistant.Data\SaleAssistant.Data.csproj">
+      <Project>{EDB574D2-F1DF-4891-8443-2AE18CFCD9F9}</Project>
+      <Name>SaleAssistant.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

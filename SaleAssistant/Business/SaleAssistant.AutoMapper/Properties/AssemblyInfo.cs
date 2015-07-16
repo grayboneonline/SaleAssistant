@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SaleAssistant.DataAccess.Mapping")]
+[assembly: AssemblyTitle("SaleAssistant.AutoMapper")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("SaleAssistant.DataAccess.Mapping")]
+[assembly: AssemblyProduct("SaleAssistant.AutoMapper")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8dee9276-9ef6-47fd-88b3-0d7a1fd0a6f9")]
+[assembly: Guid("0b02523b-f2d1-4ee0-a003-abc39e468125")]
 
 // Version information for an assembly consists of the following four values:
 //

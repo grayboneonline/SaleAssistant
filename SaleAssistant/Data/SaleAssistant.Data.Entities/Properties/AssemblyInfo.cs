@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SaleAssistant.DataAccess.Entities")]
+[assembly: AssemblyTitle("SaleAssistant.Data.Entities")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("SaleAssistant.DataAccess.Entities")]
+[assembly: AssemblyProduct("SaleAssistant.Data.Entities")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("67c0409c-9b8a-4540-93f1-4760716b8344")]
+[assembly: Guid("321edf83-6e9b-446a-8a97-24c977cafc8c")]
 
 // Version information for an assembly consists of the following four values:
 //

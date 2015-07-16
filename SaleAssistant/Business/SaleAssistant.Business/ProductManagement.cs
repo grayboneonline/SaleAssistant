@@ -1,39 +1,56 @@
-﻿using SaleAssistant.DataAccess;
+﻿using AutoMapper;
+using SaleAssistant.Business.Models;
+using SaleAssistant.DataAccess;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace SaleAssistant.Business
 {
     public interface IProductManagement
     {
-        IList<SaleAssistant.Business.Models.Product> GetAllProducts();
-        SaleAssistant.Business.Models.Product GetProductById(Guid productId);
-        //void InsertProduct(SaleAssistant.Business.Models.Product product);
-        //void DeleteProduct(Guid productId);
-        //void UpdateProduct(SaleAssistant.Business.Models.Product product);
-        //void Save();
+        IList<Product> GetAllProducts();
+        Product GetProductById(Guid productId);
+        void InsertProduct(Product product);
+        void DeleteProduct(Guid productId);
+        void UpdateProduct(Product product);
+        void Save();
     }
-    public class ProductManagement
+    public class ProductManagement : IProductManagement
     {
-        private IProductDA productDa;
+        private readonly IProductDA productDa;
         public ProductManagement(IProductDA productDa)
         {
             this.productDa = productDa;
         }
 
-        public IList<SaleAssistant.Business.Models.Product> GetAllProducts()
+        public IList<Product> GetAllProducts()
         {
-            return new List<SaleAssistant.Business.Models.Product>();//productDa.GetAllProducts();
+            return Mapper.Map<IList<Product>>(productDa.GetAllProducts());
         }
 
-        public SaleAssistant.Business.Models.Product GetProductById(Guid productId)
+        public Product GetProductById(Guid productId)
         {
-            return new SaleAssistant.Business.Models.Product();//productDa.GetProductById(productId);
+            return Mapper.Map<Product>(productDa.GetProductById(productId));
         }
-        //void InsertProduct(SaleAssistant.Business.Models.Product product);
-        //void DeleteProduct(Guid productId);
-        //void UpdateProduct(SaleAssistant.Business.Models.Product product);
-        //void Save();
+
+        public void InsertProduct(Product product)
+        {
+            productDa.InsertProduct(Mapper.Map<Data.Entities.Product>(product));
+        }
+
+        public void DeleteProduct(Guid productId)
+        {
+            productDa.DeleteProduct(productId);
+        }
+
+        public void UpdateProduct(Product product)
+        {
+            productDa.UpdateProduct(Mapper.Map<Data.Entities.Product>(product));
+        }
+
+        public void Save()
+        {
+            productDa.Save();
+        }
     }
 }
