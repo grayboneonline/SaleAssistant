@@ -18,7 +18,7 @@ namespace SaleAssistant.DataAccess
 
     public class ProductDA : IProductDA
     {
-        private SaleAssistantDbContext dbContext;
+        private readonly SaleAssistantDbContext dbContext;
 
         public ProductDA(SaleAssistantDbContext context) 
         {
@@ -40,9 +40,9 @@ namespace SaleAssistant.DataAccess
             dbContext.Products.Add(product);
         }
 
-        public void DeleteProduct(Guid productID)
+        public void DeleteProduct(Guid productId)
         {
-            Product product = dbContext.Products.Find(productID);
+            Product product = dbContext.Products.Find(productId);
             dbContext.Products.Remove(product);
         }
 

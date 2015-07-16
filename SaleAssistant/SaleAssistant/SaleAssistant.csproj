@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -284,6 +287,10 @@
     <ProjectReference Include="..\Core\Core.Data.EF\Core.Data.EF.csproj">
       <Project>{4dad354d-d258-4353-8dea-7f0a240cc312}</Project>
       <Name>Core.Data.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.Data\Core.Data.csproj">
+      <Project>{806891d8-1565-4d02-9593-22ecece32584}</Project>
+      <Name>Core.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataAccess\SaleAssistant.DataAccess.Entities\SaleAssistant.DataAccess.Entities.csproj">
       <Project>{561d63cb-4f3b-40f0-8bf2-3ece05a2816a}</Project>

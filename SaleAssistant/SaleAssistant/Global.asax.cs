@@ -6,11 +6,14 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Autofac;
 
 namespace SaleAssistant
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
+        private static IContainer Container { get; set; }
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -18,6 +21,13 @@ namespace SaleAssistant
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        private void AutofacRegister()
+        {
+            var builder = new ContainerBuilder();
+            
+            Container = builder.Build();
         }
     }
 }

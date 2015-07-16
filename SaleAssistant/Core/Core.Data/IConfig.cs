@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Core.Data
+﻿namespace Core.Data
 {
     public interface IConfig
     {

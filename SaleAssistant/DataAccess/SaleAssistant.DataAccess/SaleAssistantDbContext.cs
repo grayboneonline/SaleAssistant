@@ -1,13 +1,12 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
+using Core.Data;
 using SaleAssistant.DataAccess.Entities;
-using System.Reflection;
 
 namespace SaleAssistant.DataAccess
 {
     public class SaleAssistantDbContext : Core.Data.EF.DbContext
     {
-        public SaleAssistantDbContext() : base(Config.DevEnvironment) { }
+        public SaleAssistantDbContext(IConfig config) : base(config) { }
 
         public DbSet<Product> Products { get; set; }
 
@@ -15,10 +14,9 @@ namespace SaleAssistant.DataAccess
 
         //public System.Data.Entity.DbSet<InventoryDetail> InventoryDetails { get; set; }
 
-        protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //base.OnModelCreating(modelBuilder);
-            modelBuilder.Configurations.AddFromAssembly(typeof(SaleAssistant.DataAccess.Mapping.ProductMap).Assembly);
+            modelBuilder.Configurations.AddFromAssembly(typeof(Mapping.ProductMap).Assembly);
         }
     }
 }

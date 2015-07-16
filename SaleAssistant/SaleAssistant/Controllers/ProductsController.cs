@@ -17,7 +17,7 @@ namespace SaleAssistant.Controllers
 {
     public class ProductsController : ApiController
     {
-        private SaleAssistantDbContext db = new SaleAssistantDbContext();
+        private SaleAssistantDbContext db = new SaleAssistantDbContext(new Config());
 
         //// GET: api/Products
         //public IQueryable<Product> GetProducts()

@@ -2,12 +2,12 @@
 {
     public class DbContext : System.Data.Entity.DbContext
     {
-        protected IConfig config;
+        protected IConfig Config { get; private set; }
 
         public DbContext(IConfig config)
             : base(config.ConnectionString)
         {
-            this.config = config;
+            Config = config;
         }
     }
 }
