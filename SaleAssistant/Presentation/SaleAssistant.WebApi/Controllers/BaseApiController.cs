@@ -1,8 +1,8 @@
 ﻿using System.Net.Http;
 using System.Web.Http;
+using Core.OAuth.Identity.Infrastucture;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using SaleAssistant.WebApi.Infrastructure;
 using SaleAssistant.WebApi.Models;
 
 namespace SaleAssistant.WebApi.Controllers
@@ -10,13 +10,13 @@ namespace SaleAssistant.WebApi.Controllers
     public class BaseApiController : ApiController
     {
         private ModelFactory modelFactory;
-        private readonly ApplicationUserManager appUserManager = null;
+        private readonly UserIdentityManager appUserManager = null;
 
-        protected ApplicationUserManager AppUserManager
+        protected UserIdentityManager AppUserManager
         {
             get
             {
-                return appUserManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                return appUserManager ?? Request.GetOwinContext().GetUserManager<UserIdentityManager>();
             }
         }
 

@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace SaleAssistant.WebApi.Infrastructure
+namespace Core.OAuth.Identity.Infrastucture
 {
-    public class ApplicationUser : IdentityUser
+    public class UserIdentity : IdentityUser
     {
         [Required]
         [MaxLength(100)]
@@ -16,7 +16,7 @@ namespace SaleAssistant.WebApi.Infrastructure
         [MaxLength(100)]
         public string LastName { get; set; }
 
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<UserIdentity> manager, string authenticationType)
         {
             var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
             // Add custom user claims here

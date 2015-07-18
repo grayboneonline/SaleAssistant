@@ -3,20 +3,19 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 
-namespace SaleAssistant.WebApi.Infrastructure
+namespace Core.OAuth.Identity.Infrastucture
 {
-    public class ApplicationUserManager : UserManager<ApplicationUser>
+    public class UserIdentityManager : UserManager<UserIdentity>
     {
-        public ApplicationUserManager(IUserStore<ApplicationUser> store)
-            : base(store)
+        public UserIdentityManager(IUserStore<UserIdentity> store) : base(store)
         {
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
+        public static UserIdentityManager Create(IdentityFactoryOptions<UserIdentityManager> options, IOwinContext context)
         {
-            var appDbContext = context.Get<ApplicationDbContext>();
-            var appUserManager = new ApplicationUserManager(new UserStore<ApplicationUser>(appDbContext));
-            appUserManager.UserValidator = new UserValidator<ApplicationUser>(appUserManager)
+            var appDbContext = context.Get<UserIdentityDbContext>();
+            var appUserManager = new UserIdentityManager(new UserStore<UserIdentity>(appDbContext));
+            appUserManager.UserValidator = new UserValidator<UserIdentity>(appUserManager)
             {
                 AllowOnlyAlphanumericUserNames = true,
                 RequireUniqueEmail = true,

@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Core.OAuth.Identity.Infrastucture;
 using Microsoft.AspNet.Identity;
-using SaleAssistant.WebApi.Infrastructure;
 using SaleAssistant.WebApi.Models;
 
 namespace SaleAssistant.WebApi.Controllers
@@ -53,7 +53,7 @@ namespace SaleAssistant.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser
+            var user = new UserIdentity
             {
                 UserName = createUserModel.Username,
                 Email = createUserModel.Email,

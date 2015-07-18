@@ -1,23 +1,22 @@
+using Core.OAuth.Identity.Infrastucture;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using SaleAssistant.WebApi.Infrastructure;
 using System.Data.Entity.Migrations;
 
-namespace SaleAssistant.WebApi.Migrations
+namespace Core.OAuth.Identity.Migrations
 {
-
-    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<UserIdentityDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ApplicationDbContext context)
+        protected override void Seed(UserIdentityDbContext context)
         {
-            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var manager = new UserManager<UserIdentity>(new UserStore<UserIdentity>(new UserIdentityDbContext()));
 
-            var user = new ApplicationUser()
+            var user = new UserIdentity
             {
                 UserName = "administrator",
                 Email = "grayboneonline@gmail.com",

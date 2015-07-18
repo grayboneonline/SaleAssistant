@@ -1,22 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Http.Routing;
-using SaleAssistant.WebApi.Infrastructure;
+using Core.OAuth.Identity.Infrastucture;
 
 namespace SaleAssistant.WebApi.Models
 {
     public class ModelFactory
     {
         private readonly UrlHelper urlHelper;
-        private readonly ApplicationUserManager appUserManager;
+        private readonly UserIdentityManager appUserManager;
 
-        public ModelFactory(HttpRequestMessage request, ApplicationUserManager appUserManager)
+        public ModelFactory(HttpRequestMessage request, UserIdentityManager appUserManager)
         {
             urlHelper = new UrlHelper(request);
             this.appUserManager = appUserManager;
         }
 
-        public UserReturnModel Create(ApplicationUser appUser)
+        public UserReturnModel Create(UserIdentity appUser)
         {
             return new UserReturnModel
             {

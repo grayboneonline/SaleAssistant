@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Configuration;
 using System.IdentityModel.Tokens;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.DataHandler.Encoder;
 using Thinktecture.IdentityModel.Tokens;
 
-namespace SaleAssistant.WebApi.Providers
+namespace Core.OAuth.Identity.Providers
 {
     public class CustomJwtFormat : ISecureDataFormat<AuthenticationTicket>
     {
-
         private readonly string issuer = string.Empty;
 
         public CustomJwtFormat(string issuer)
@@ -24,9 +22,9 @@ namespace SaleAssistant.WebApi.Providers
                 throw new ArgumentNullException("data");
             }
 
-            string audienceId = ConfigurationManager.AppSettings["as:AudienceId"];
+            string audienceId = AuthenticationServerConfig.AudienceId;
 
-            string symmetricKeyAsBase64 = ConfigurationManager.AppSettings["as:AudienceSecret"];
+            string symmetricKeyAsBase64 = AuthenticationServerConfig.AudienceSecret;
 
             var keyByteArray = TextEncodings.Base64Url.Decode(symmetricKeyAsBase64);
 

@@ -1,4 +1,4 @@
-namespace SaleAssistant.WebApi.Migrations
+namespace Core.OAuth.Identity.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
