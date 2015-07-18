@@ -1,11 +1,13 @@
-﻿using SaleAssistant.Business;
-using SaleAssistant.Business.Models;
-using System;
+﻿using System;
 using System.Web.Http;
 using System.Web.Http.Description;
+using SaleAssistant.Business;
+using SaleAssistant.Business.Models;
 
-namespace SaleAssistant.Controllers
+namespace SaleAssistant.WebApi.Controllers
 {
+    [Authorize]
+    [RoutePrefix("api/products")]
     public class ProductsController : ApiController
     {
         private readonly IProductManagement productManagement;
@@ -23,6 +25,7 @@ namespace SaleAssistant.Controllers
 
         // GET: api/Products/5
         [ResponseType(typeof(Product))]
+        [Route("product/{id:guid}", Name = "GetProductById")]
         public IHttpActionResult GetProduct(Guid id)
         {
             Product product = productManagement.GetById(id);

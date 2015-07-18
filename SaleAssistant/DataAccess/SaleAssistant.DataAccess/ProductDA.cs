@@ -1,60 +1,17 @@
-﻿using System.Data.Entity;
-using SaleAssistant.Data;
+﻿using SaleAssistant.Data;
 using SaleAssistant.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace SaleAssistant.DataAccess
 {
-    public interface IProductDA
+    public interface IProductDA : IEntityDA<Product>
     {
-        IList<Product> GetAllProducts();
-        Product GetProductById(Guid productId);
-        void InsertProduct(Product product);
-        void DeleteProduct(Guid productId);
-        void UpdateProduct(Product product);
-        void Save();
+        
     }
 
-    public class ProductDA : IProductDA
+    public class ProductDA : EntityDA<Product>, IProductDA
     {
-        private readonly SaleAssistantDbContext dbContext;
-
-        public ProductDA(SaleAssistantDbContext context) 
+        public ProductDA(SaleAssistantDbContext context) : base (context)
         {
-            dbContext = context;
-        }
-
-        public IList<Product> GetAllProducts()
-        {
-            return dbContext.Products.ToList();
-        }
-
-        public Product GetProductById(Guid productId)
-        {
-            return dbContext.Products.Find(productId);
-        }
-
-        public void InsertProduct(Product product)
-        {
-            dbContext.Products.Add(product);
-        }
-
-        public void DeleteProduct(Guid productId)
-        {
-            Product product = dbContext.Products.Find(productId);
-            dbContext.Products.Remove(product);
-        }
-
-        public void UpdateProduct(Product product)
-        {
-            dbContext.Entry(product).State = EntityState.Modified;
-        }
-
-        public void Save()
-        {
-            dbContext.SaveChanges();
         }
     }
 }

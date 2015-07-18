@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccessModule.cs" />
+    <Compile Include="IEntityDA.cs" />
     <Compile Include="ProductDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
