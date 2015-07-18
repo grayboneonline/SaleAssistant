@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaleAssistant.DataAccess", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaleAssistant.AutoMapper", "Business\SaleAssistant.AutoMapper\SaleAssistant.AutoMapper.csproj", "{60320E6F-6436-4787-91CF-380ADF0547AA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{7ABE79B9-EEF4-49D4-BD22-C49C54C8DAAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaleAssistant.WebApi", "Presentation\SaleAssistant.WebApi\SaleAssistant.WebApi.csproj", "{7F6D8555-697B-4707-9B06-A1DA35C8FD9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,10 @@ Global
 		{60320E6F-6436-4787-91CF-380ADF0547AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60320E6F-6436-4787-91CF-380ADF0547AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60320E6F-6436-4787-91CF-380ADF0547AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F6D8555-697B-4707-9B06-A1DA35C8FD9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F6D8555-697B-4707-9B06-A1DA35C8FD9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F6D8555-697B-4707-9B06-A1DA35C8FD9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F6D8555-697B-4707-9B06-A1DA35C8FD9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,5 +83,6 @@ Global
 		{00CE8683-5541-476A-8059-0B1D31A84B89} = {BFE97661-D289-46F6-A79A-F93C1CD42095}
 		{393224EC-EADA-4895-BFE0-E176906AE14E} = {E8100F41-9E8F-4A03-91BF-9486C6218CE0}
 		{60320E6F-6436-4787-91CF-380ADF0547AA} = {1F9B28B3-F6B7-4EB0-BD7A-604C67FBFA30}
+		{7F6D8555-697B-4707-9B06-A1DA35C8FD9B} = {7ABE79B9-EEF4-49D4-BD22-C49C54C8DAAB}
 	EndGlobalSection
 EndGlobal
