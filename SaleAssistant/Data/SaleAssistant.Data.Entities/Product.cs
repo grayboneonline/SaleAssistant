@@ -1,17 +1,14 @@
-﻿namespace SaleAssistant.Data.Entities
+﻿using System;
+
+namespace SaleAssistant.Data.Entities
 {
     public class Product : Entity
     {
         public string Name { get; set; }
-        
         public string Code { get; set; }
+        public Status Status { get; set; }
+        public Guid UnitId { get; set; }
 
-        public ProductStatus Status { get; set; }
-    }
-
-    public enum ProductStatus
-    {
-        InActive = 0,
-        Active = 1,
+        public virtual Unit Unit { get; set; }
     }
 }

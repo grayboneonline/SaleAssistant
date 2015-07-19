@@ -43,6 +43,12 @@
   <ItemGroup>
     <Compile Include="BusinessModule.cs" />
     <Compile Include="IEntityManagement.cs" />
+    <Compile Include="InventoryManagement.cs" />
+    <Compile Include="InventoryItemManagement.cs" />
+    <Compile Include="VendorManagement.cs" />
+    <Compile Include="CustomerManagement.cs" />
+    <Compile Include="ProductPricingManagement.cs" />
+    <Compile Include="UnitManagement.cs" />
     <Compile Include="ProductManagement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

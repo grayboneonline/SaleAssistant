@@ -45,6 +45,12 @@
   <ItemGroup>
     <Compile Include="DataAccessModule.cs" />
     <Compile Include="IEntityDA.cs" />
+    <Compile Include="CustomerDA.cs" />
+    <Compile Include="InventoryItemDA.cs" />
+    <Compile Include="InventoryDA.cs" />
+    <Compile Include="ProductPricingDA.cs" />
+    <Compile Include="VendorDA.cs" />
+    <Compile Include="UnitDA.cs" />
     <Compile Include="ProductDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

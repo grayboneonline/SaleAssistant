@@ -41,6 +41,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerMap.cs" />
+    <Compile Include="InventoryItemMap.cs" />
+    <Compile Include="InventoryMap.cs" />
+    <Compile Include="ProductPricingMap.cs" />
+    <Compile Include="VendorMap.cs" />
+    <Compile Include="UnitMap.cs" />
     <Compile Include="ProductMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

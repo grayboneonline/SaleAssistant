@@ -16,7 +16,7 @@ namespace SaleAssistant.Data
 
         //public System.Data.Entity.DbSet<Inventory> Inventories { get; set; }
 
-        //public System.Data.Entity.DbSet<InventoryDetail> InventoryDetails { get; set; }
+        //public System.Data.Entity.DbSet<InventoryItem> InventoryDetails { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
