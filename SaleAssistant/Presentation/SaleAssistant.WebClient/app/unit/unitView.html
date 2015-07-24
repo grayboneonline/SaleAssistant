@@ -1,0 +1,43 @@
+﻿<h1 class="md-headline">Maintain units</h1>
+<div class="items-container">
+    <md-card ng-repeat="item in items" class="tile" ng-class="{'active': item.isEditing}">
+        <div class="tile-container" layout="column">
+            <div class="tile-header" layout="row" ng-click="toggleEdit(item)">
+                <md-button class="md-icon-button" aria-label="edit">
+                    <md-icon md-svg-icon="assets/img/icons/keyboard_arrow_right.svg"></md-icon>
+                </md-button>
+                <p>{{ item.name }} </p>
+                <span flex></span>
+                <md-button class="md-icon-button" aria-label="visibility">
+                    <md-icon ng-if="item.status == 1" md-svg-icon="assets/img/icons/visibility_off.svg" class="s24"></md-icon>
+                    <md-icon ng-if="item.status != 1" md-svg-icon="assets/img/icons/visibility.svg" class="s24"></md-icon>
+                </md-button>
+                <md-button class="md-icon-button" aria-label="trash">
+                    <md-icon md-svg-icon="assets/img/icons/delete.svg" class="s24"></md-icon>
+                </md-button>
+            </div>
+            <div class="tile-item-edit" ng-if="item.isEditing" layout="column">
+                <div layout="row">
+                    <span flex></span>
+                    <form name="editForm" flex>
+                        <md-input-container>
+                            <label>Name</label>
+                            <input md-maxlength="50" required name="name" ng-model="item.name" />
+                            <div ng-messages="editForm.name.$error">
+                                <div ng-message="required">This is required.</div>
+                                <div ng-message="md-maxlength">The name has to be less than 50 characters long.</div>
+                            </div>
+                        </md-input-container>
+                    </form>
+                    <span flex></span>
+                </div>
+                <div layout="row">
+                    <span flex></span>
+                    <md-button class="md-raised md-primary">Save</md-button>
+                    <md-button class="md-raised md-secondary">Cancel</md-button>
+                </div>
+            </div>
+        </div>
+        <md-divider></md-divider>
+    </md-card>
+</div>

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Core.OAuth.Identity.Infrastucture;
 using Microsoft.AspNet.Identity;
 using SaleAssistant.WebApi.Models;
 
@@ -44,34 +42,34 @@ namespace SaleAssistant.WebApi.Controllers
             return NotFound();
         }
 
-        [Route("create")]
-        [AllowAnonymous]
-        public async Task<IHttpActionResult> CreateUser(AccountBindingModels.CreateUserBindingModel createUserModel)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[Route("create")]
+        //[AllowAnonymous]
+        //public async Task<IHttpActionResult> CreateUser(AccountBindingModels.CreateUserBindingModel createUserModel)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            var user = new UserIdentity
-            {
-                UserName = createUserModel.Username,
-                Email = createUserModel.Email,
-                FirstName = createUserModel.FirstName,
-                LastName = createUserModel.LastName,
-            };
+        //    var user = new UserIdentity
+        //    {
+        //        UserName = createUserModel.Username,
+        //        Email = createUserModel.Email,
+        //        FirstName = createUserModel.FirstName,
+        //        LastName = createUserModel.LastName,
+        //    };
 
-            IdentityResult addUserResult = await AppUserManager.CreateAsync(user, createUserModel.Password);
+        //    IdentityResult addUserResult = await AppUserManager.CreateAsync(user, createUserModel.Password);
 
-            if (!addUserResult.Succeeded)
-            {
-                return GetErrorResult(addUserResult);
-            }
+        //    if (!addUserResult.Succeeded)
+        //    {
+        //        return GetErrorResult(addUserResult);
+        //    }
 
-            Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = user.Id }));
+        //    Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = user.Id }));
 
-            return Created(locationHeader, ModelFactory.Create(user));
-        }
+        //    return Created(locationHeader, ModelFactory.Create(user));
+        //}
 
         [Route("changepassword")]
         public async Task<IHttpActionResult> ChangePassword(AccountBindingModels.ChangePasswordBindingModel model)
@@ -91,29 +89,28 @@ namespace SaleAssistant.WebApi.Controllers
             return Ok();
         }
 
-        [Route("user/{id:guid}")]
-        public async Task<IHttpActionResult> DeleteUser(string id)
-        {
+        //[Route("user/{id:guid}")]
+        //public async Task<IHttpActionResult> DeleteUser(string id)
+        //{
 
-            //Only SuperAdmin or Admin can delete users (Later when implement roles)
+        //    //Only SuperAdmin or Admin can delete users (Later when implement roles)
 
-            var appUser = await AppUserManager.FindByIdAsync(id);
+        //    var appUser = await AppUserManager.FindByIdAsync(id);
 
-            if (appUser != null)
-            {
-                IdentityResult result = await AppUserManager.DeleteAsync(appUser);
+        //    if (appUser != null)
+        //    {
+        //        IdentityResult result = await AppUserManager.DeleteAsync(appUser);
 
-                if (!result.Succeeded)
-                {
-                    return GetErrorResult(result);
-                }
+        //        if (!result.Succeeded)
+        //        {
+        //            return GetErrorResult(result);
+        //        }
 
-                return Ok();
+        //        return Ok();
 
-            }
+        //    }
 
-            return NotFound();
-
-        }
+        //    return NotFound();
+        //}
     }
 }

@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.OAuth.Identity", "Core
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Common", "Core\Core.Common\Core.Common.csproj", "{E6E06586-86CF-41FE-BA85-FD89F661C513}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaleAssistant.WebClient", "Presentation\SaleAssistant.WebClient\SaleAssistant.WebClient.csproj", "{034F4DD9-7423-4DD6-B07A-8BCEB9903127}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +87,10 @@ Global
 		{E6E06586-86CF-41FE-BA85-FD89F661C513}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6E06586-86CF-41FE-BA85-FD89F661C513}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6E06586-86CF-41FE-BA85-FD89F661C513}.Release|Any CPU.Build.0 = Release|Any CPU
+		{034F4DD9-7423-4DD6-B07A-8BCEB9903127}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{034F4DD9-7423-4DD6-B07A-8BCEB9903127}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{034F4DD9-7423-4DD6-B07A-8BCEB9903127}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{034F4DD9-7423-4DD6-B07A-8BCEB9903127}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,5 +106,6 @@ Global
 		{7F6D8555-697B-4707-9B06-A1DA35C8FD9B} = {7ABE79B9-EEF4-49D4-BD22-C49C54C8DAAB}
 		{F62CC41A-0FAC-449C-8C3F-5421A78E2DE6} = {450AB3BD-DF02-43D4-BBBC-97D6059CB219}
 		{E6E06586-86CF-41FE-BA85-FD89F661C513} = {450AB3BD-DF02-43D4-BBBC-97D6059CB219}
+		{034F4DD9-7423-4DD6-B07A-8BCEB9903127} = {7ABE79B9-EEF4-49D4-BD22-C49C54C8DAAB}
 	EndGlobalSection
 EndGlobal

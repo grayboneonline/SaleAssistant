@@ -1,0 +1,39 @@
+.md-sidenav-left, .md-sidenav-left.md-locked-open {
+    min-width: 260px;
+    width: 260px;
+}
+button.md-button.logo {
+    color: #FFF;
+}
+
+md-card.tile {
+    border-radius: 0;
+    margin: 0 10px;
+}
+md-card.tile.active {
+    margin: 15px 10px;
+    background-color: #F9F9F6;
+}
+md-card.tile.active:first-child {
+    margin: 0 10px 15px 10px;
+}
+
+md-card.tile .tile-header:focus {
+    outline: none;
+}
+md-card.tile .tile-header {
+    cursor: hand;
+    cursor: pointer;
+}
+md-card.tile .tile-item-edit {
+    padding: 0 10px 10px 10px;
+}
+
+md-icon.s16 {
+    height: 16px;
+    width: 16px;
+}
+md-icon.s24 {
+    height: 24px;
+    width: 24px;
+}

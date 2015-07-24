@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="saleAssistant">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sale Assistant</title>
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic" />
+    <link rel="stylesheet" href="assets/css/app.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
+    
+    <script src="app/app.module.js"></script>
+    <script src="app/app.route.js"></script>
+    <script src="app/shared/globalController.js"></script>
+    <script src="app/shared/sidenavController.js"></script>
+    
+    <script src="app/login/loginController.js"></script>
+    <script src="app/home/homeController.js"></script>
+    <script src="app/unit/unitController.js"></script>
+
+</head>
+<body layout="column" ng-controller="globalController as globalCtrl">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" ng-click="toggleLeft()" aria-label="menu">
+                <md-icon md-svg-icon="assets/img/icons/menu.svg"></md-icon>
+            </md-button>
+            <md-button md-no-ink class="logo" href="#/">Sale Assistant</md-button>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+    <section layout="row" flex>
+        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+            <md-content layout-padding ng-controller="sidenavController">
+                <md-list>
+                    <md-list-item ng-click="navigateTo(menu.url)" ng-repeat="menu in menus">
+                        <md-icon md-svg-icon="assets/img/icons/remove.svg"></md-icon>
+                        <p>{{ menu.name }}</p>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </md-sidenav>
+        <md-content flex layout-padding>
+            <ng-view layout="column" layout-fill layout-align="top center">
+                
+            </ng-view>
+        </md-content>
+    </section>
+</body>
+</html>

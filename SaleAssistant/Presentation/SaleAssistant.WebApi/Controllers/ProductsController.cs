@@ -25,7 +25,7 @@ namespace SaleAssistant.WebApi.Controllers
 
         // GET: api/Products/5
         [ResponseType(typeof(Product))]
-        [Route("product/{id:guid}", Name = "GetProductById")]
+        [Route("~/api/product/{id:guid}", Name = "GetProductById")]
         public IHttpActionResult GetProduct(Guid id)
         {
             Product product = productManagement.GetById(id);

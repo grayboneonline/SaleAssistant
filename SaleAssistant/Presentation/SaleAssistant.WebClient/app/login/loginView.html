@@ -1,0 +1,25 @@
+﻿<div layout="row">
+    <span flex></span>
+    <form flex name="loginForm">
+        <md-input-container>
+            <label>Username</label>
+            <input required name="name" ng-model="username" />
+            <div ng-messages="loginForm.name.$error">
+                <div ng-message="required">This is required.</div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>Password</label>
+            <input type="password" required name="password" ng-model="password" />
+            <div ng-messages="loginForm.password.$error">
+                <div ng-message="required">This is required.</div>
+            </div>
+        </md-input-container>
+        <div layout="row">
+            <span flex></span>
+            <md-button flex class="md-raised md-primary">Login</md-button>
+            <span flex></span>
+        </div>
+    </form>
+    <span flex></span>
+</div>
