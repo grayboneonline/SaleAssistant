@@ -14,7 +14,7 @@
     <RootNamespace>SaleAssistant.WebClient</RootNamespace>
     <AssemblyName>SaleAssistant.WebClient</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -57,19 +57,24 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\login\loginController.js" />
-    <Content Include="app\login\loginView.html" />
-    <Content Include="app\shared\directives\saTileDirective.html" />
-    <Content Include="app\shared\directives\saTileDirective.js" />
-    <Content Include="app\unit\unitController.js" />
-    <Content Include="app\unit\unitView.html" />
-    <Content Include="app\shared\sidenavController.js" />
+    <Content Include="app\app.auth.js" />
+    <Content Include="app\login\login-controller.js" />
+    <Content Include="app\login\login-view.html" />
+    <Content Include="app\login\login-service.js" />
+    <Content Include="app\shared\directives\sa-tile-directive.html" />
+    <Content Include="app\shared\directives\sa-tile-directive.js" />
+    <Content Include="app\shared\services\sa-http-service.js" />
+    <Content Include="app\shared\services\sa-response-interceptor-service.js" />
+    <Content Include="app\unit\unit-controller.js" />
+    <Content Include="app\unit\unit-data-service.js" />
+    <Content Include="app\unit\unit-view.html" />
+    <Content Include="app\shared\sidenav-controller.js" />
     <Content Include="assets\img\icons\menu.svg" />
     <Content Include="assets\img\icons\remove.svg" />
     <Content Include="app\app.route.js" />
-    <Content Include="assets\img\icons\keyboard_arrow_right.svg" />
+    <Content Include="assets\img\icons\keyboard-arrow-right.svg" />
     <Content Include="assets\img\icons\visibility.svg" />
-    <Content Include="assets\img\icons\visibility_off.svg" />
+    <Content Include="assets\img\icons\visibility-off.svg" />
     <Content Include="assets\img\icons\delete.svg" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -80,9 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.module.js" />
-    <Content Include="app\home\homeController.js" />
-    <Content Include="app\home\homeView.html" />
-    <Content Include="app\shared\globalController.js" />
+    <Content Include="app\home\home-controller.js" />
+    <Content Include="app\home\home-view.html" />
+    <Content Include="app\shared\global-controller.js" />
     <Content Include="assets\css\app.css" />
     <Content Include="index.html" />
     <Content Include="Web.config" />
@@ -109,7 +114,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54469</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:54398/</IISUrl>
+          <IISUrl>http://localhost/SaleAssistant.WebClient</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -19,13 +19,18 @@
     
     <script src="app/app.module.js"></script>
     <script src="app/app.route.js"></script>
-    <script src="app/shared/globalController.js"></script>
-    <script src="app/shared/sidenavController.js"></script>
+    <script src="app/app.auth.js"></script>
+    <script src="app/shared/global-controller.js"></script>
+    <script src="app/shared/sidenav-controller.js"></script>
+    <script src="app/shared/services/sa-http-service.js"></script>
+    <script src="app/shared/services/sa-response-interceptor-service.js"></script>
     
-    <script src="app/login/loginController.js"></script>
-    <script src="app/home/homeController.js"></script>
-    <script src="app/unit/unitController.js"></script>
+    <script src="app/login/login-controller.js"></script>
+    <script src="app/home/home-controller.js"></script>
+    <script src="app/unit/unit-controller.js"></script>
 
+    <script src="app/unit/unit-data-service.js"></script>
+    <script src="app/login/login-service.js"></script>
 </head>
 <body layout="column" ng-controller="globalController as globalCtrl">
     <md-toolbar>
