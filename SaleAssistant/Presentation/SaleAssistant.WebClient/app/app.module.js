@@ -1,5 +1,5 @@
 (function () {
     'use strict';
 
-    angular.module('saleAssistant', ['ngRoute', 'ngMaterial', 'ngAnimate', 'ngMessages']);
+    angular.module('saleAssistant', ['ngRoute', 'ngMaterial', 'ngAnimate', 'ngMessages', 'ngStorage']);
 })();

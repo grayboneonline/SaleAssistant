@@ -65,6 +65,7 @@
     <Content Include="app\shared\directives\sa-tile-directive.js" />
     <Content Include="app\shared\services\sa-http-service.js" />
     <Content Include="app\shared\services\sa-response-interceptor-service.js" />
+    <Content Include="app\shared\services\session-service.js" />
     <Content Include="app\unit\unit-controller.js" />
     <Content Include="app\unit\unit-data-service.js" />
     <Content Include="app\unit\unit-view.html" />

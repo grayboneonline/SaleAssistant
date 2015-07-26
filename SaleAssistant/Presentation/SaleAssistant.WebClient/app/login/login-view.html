@@ -1,23 +1,26 @@
 ﻿<div layout="row">
     <span flex></span>
     <form flex name="loginForm">
+        <h3>Login to system</h3>
         <md-input-container>
             <label>Username</label>
             <input required name="name" ng-model="username" />
-            <div ng-messages="loginForm.name.$error">
-                <div ng-message="required">This is required.</div>
+            <div ng-messages="loginForm.name.$error" ng-show="loginForm.name.$touched">
+                <div ng-message="required">Username is required.</div>
             </div>
         </md-input-container>
         <md-input-container>
             <label>Password</label>
-            <input type="password" required name="password" ng-model="password" />
-            <div ng-messages="loginForm.password.$error">
-                <div ng-message="required">This is required.</div>
+            <input type="password" required name="password" ng-model="password" password-check />
+            <div ng-messages="loginForm.password.$error" ng-show="loginForm.password.$touched">
+                <div ng-message="required">Password is required.</div>
+                <div ng-message="passwordCheck">{{ errorMessage }}</div>
             </div>
         </md-input-container>
         <div layout="row">
             <span flex></span>
             <md-button flex class="md-raised md-primary" ng-click="login()">Login</md-button>
+            <!--<md-progress-circular md-mode="indeterminate"></md-progress-circular>-->
             <span flex></span>
         </div>
     </form>

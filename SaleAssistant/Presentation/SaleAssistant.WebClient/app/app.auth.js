@@ -9,20 +9,12 @@
         $httpProvider.interceptors.push('saResponseInterceptorService');
     }
 
-    addAuthorizationHeader.$inject = ['$rootScope', '$injector'];
+    addAuthorizationHeader.$inject = ['$rootScope', '$injector', 'sessionService'];
 
-    function addAuthorizationHeader($rootScope, $injector) {
-        //$injector.get("$http").defaults.transformRequest = function (data, headersGetter) {
-        //    if (sessionService.isLogged()) {
-        //        headersGetter()['Authorization'] = "Bearer " + sessionService.getAccessToken();
-        //    }
-        //    if (data) {
-        //        return angular.toJson(data);
-        //    }
-        //};
+    function addAuthorizationHeader($rootScope, $injector, sessionService) {
         $injector.get("$http").defaults.transformRequest = function (data, headersGetter) {
-            if ($rootScope.oauth)
-                headersGetter()['Authorization'] = "Bearer " + $rootScope.oauth.access_token;
+            if (sessionService.isLogged())
+                headersGetter()['Authorization'] = "Bearer " + sessionService.getAccessToken();
             if (data) return angular.toJson(data);
         };
     }

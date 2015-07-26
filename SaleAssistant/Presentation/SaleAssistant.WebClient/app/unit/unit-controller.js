@@ -14,10 +14,18 @@
         //    { id: 5, name: 'ml'    , status: 1 },
         //    { id: 6, name: 'mg'    , status: 1 }
         //];
-        $scope.items = unitDataService.getAll();
+        unitDataService.getAll().then(onSuccess, onError);
 
-        for (var i in $scope.items)
-            $scope.items[i].isEditing = false;
+        function onSuccess(data) {
+            $scope.items = data;
+            for (var i in $scope.items)
+                $scope.items[i].isEditing = false;
+        }
+        function onError() {
+            
+        }
+
+        
 
         $scope.toggleEdit = function (item) {
             if (item.isEditing) {

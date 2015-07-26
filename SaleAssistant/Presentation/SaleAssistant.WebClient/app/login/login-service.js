@@ -20,8 +20,7 @@
                 grant_type: 'password'
             };
 
-            var result = saHttpService.postAsFormData(serviceBase, params);
-
+            return saHttpService.postAsFormData(serviceBase, params);
         }
     }
 })();
