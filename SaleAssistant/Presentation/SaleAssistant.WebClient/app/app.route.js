@@ -5,16 +5,7 @@
 
     configureRoutes.$inject = ['$routeProvider'];
 
-    function configureRoutes($routeProvider, $locationProvider) {
-
-        //var routeProvider = angular.extend({}, $routeProvider, {
-        //    when: function (path, route) {
-        //        route.resolve = (route.resolve) ? route.resolve : {};
-        //        angular.extend(route.resolve, { appStart: ['appStartService', function (appStartService) { return appStartService.start(path); }] });
-        //        $routeProvider.when(path, route);
-        //        return this;
-        //    }
-        //});
+    function configureRoutes($routeProvider) {
 
         $routeProvider
             .when('/', { templateUrl: 'app/home/home-view.html', controller: 'homeController', controllerAs: 'homeCtrl' })

@@ -10,7 +10,8 @@
         var service = {
             get: get,
             post: post,
-            postAsFormData: postAsFormData
+            postAsFormData: postAsFormData,
+            put: put
         }
 
         return service;
@@ -65,6 +66,20 @@
             }).error(function (data, status, headers, config) {
                 deferred.reject({ data: data, status: status });
             });
+            return deferred.promise;
+        }
+
+        function put(url, data) {
+            var deferred = $q.defer();
+
+            $http.put(baseUrl + url, data, { async: true })
+                .success(function (data, status, headers, config) {
+                    deferred.resolve(data);
+                })
+                .error(function (data, status, headers, config) {
+                    deferred.reject({ data: data, status: status });
+                });
+
             return deferred.promise;
         }
     }

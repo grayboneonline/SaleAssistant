@@ -1,8 +1,8 @@
 USE [SaleAssistant]
 
-INSERT INTO [Unit] ([Id], [Name], [Status])
-VALUES ('85C65762-6DC7-4503-9271-74A43D2CA9AB', 'Kg', 1),
-	   ('29F4A4DA-F35B-4275-B4D8-DE63F5748C42', 'Bottle', 1)
+INSERT INTO [Unit] ([Id], [Name], [Status], [IsTrash])
+VALUES ('85C65762-6DC7-4503-9271-74A43D2CA9AB', 'Kg', 1, 0),
+	   ('29F4A4DA-F35B-4275-B4D8-DE63F5748C42', 'Bottle', 1, 0)
 
 GO
 

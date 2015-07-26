@@ -5,6 +5,7 @@ CREATE TABLE [dbo].[Unit](
 	[Id] [uniqueidentifier] NOT NULL,
 	[Name] [nvarchar](50) NOT NULL,
 	[Status] [int] NOT NULL,
+	[IsTrash] [bit] NOT NULL DEFAULT(0),
  CONSTRAINT [PK_Unit] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

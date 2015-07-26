@@ -5,20 +5,26 @@
 button.md-button.logo {
     color: #FFF;
 }
+button.md-button.tile-header-button {
+    margin: 0;
+}
+button.md-button.trash {
+    margin: 18px 0;
+}
 
 md-card.tile {
     border-radius: 0;
-    margin: 0 10px;
+    margin: 0;
 }
 md-card.tile.active {
-    margin: 15px 10px;
+    margin: 15px 0;
     background-color: #F9F9F6;
 }
 md-card.tile.active:first-child {
-    margin: 0 10px 15px 10px;
+    margin: 0 0 15px 0;
 }
 
-md-card.tile .tile-header:focus {
+md-card.tile .tile-header .tile-title:focus {
     outline: none;
 }
 md-card.tile .tile-header {
@@ -36,4 +42,11 @@ md-icon.s16 {
 md-icon.s24 {
     height: 24px;
     width: 24px;
+}
+
+.padding-left-10, .padding-left-right-10 {
+    padding-left: 10px;
+}
+.padding-right-10, .padding-left-right-10 {
+    padding-right: 10px;
 }

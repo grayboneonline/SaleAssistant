@@ -3,9 +3,9 @@
 
     angular.module('saleAssistant').factory('saResponseInterceptorService', saResponseInterceptorService);
 
-    saResponseInterceptorService.$inject = ['$q', '$window', '$location'];
+    saResponseInterceptorService.$inject = ['$q', '$location'];
 
-    function saResponseInterceptorService($q, $window, $location) {
+    function saResponseInterceptorService($q, $location) {
         return {
             response: function (response) {
                 return response || $q.when(response);
@@ -13,6 +13,7 @@
             responseError: function (rejection) {
                 if (rejection.status === 401) {
                     $location.path('/login');
+                    // handle refresh token here.
                     //var token = $rootScope.refresh_token;
 
                     //authFactory.save({

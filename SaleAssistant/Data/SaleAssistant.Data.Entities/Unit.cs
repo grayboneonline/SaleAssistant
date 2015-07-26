@@ -4,5 +4,6 @@
     {
         public string Name { get; set; }
         public Status Status { get; set; }
+        public bool IsTrash { get; set; }
     }
 }

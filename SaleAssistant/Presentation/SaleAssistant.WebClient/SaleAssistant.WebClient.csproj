@@ -77,6 +77,7 @@
     <Content Include="assets\img\icons\visibility.svg" />
     <Content Include="assets\img\icons\visibility-off.svg" />
     <Content Include="assets\img\icons\delete.svg" />
+    <Content Include="assets\img\icons\reply.svg" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

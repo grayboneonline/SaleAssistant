@@ -6,36 +6,88 @@
     unitController.$inject = ['$scope', 'unitDataService'];
 
     function unitController($scope, unitDataService) {
-        //$scope.items = [
-        //    { id: 1, name: 'kg'    , status: 1 },
-        //    { id: 2, name: 'bottle', status: 1 },
-        //    { id: 3, name: 'ton'   , status: 1 },
-        //    { id: 4, name: 'l'     , status: 1 },
-        //    { id: 5, name: 'ml'    , status: 1 },
-        //    { id: 6, name: 'mg'    , status: 1 }
-        //];
-        unitDataService.getAll().then(onSuccess, onError);
+        $scope.inTrash = false;
+        $scope.items = [];
+        $scope.selectedItem = {};
 
-        function onSuccess(data) {
-            $scope.items = data;
-            for (var i in $scope.items)
-                $scope.items[i].isEditing = false;
-        }
-        function onError() {
-            
+        $scope.init = function () {
+            unitDataService.getAll().then(onSuccess, onError);
+
+            function onSuccess(data) {
+                $scope.items = data;
+                for (var i in $scope.items)
+                    $scope.items[i].isEditing = false;
+            }
+            function onError() {
+
+            }
         }
 
+        $scope.trashFilter = function(item) {
+            return item.isTrash === $scope.inTrash;
+        }
         
+        $scope.noItems = function() {
+            if ($scope.inTrash) {
+                for (var i in $scope.items) {
+                    if($scope.items[i].isTrash)
+                        return false;
+                }
+                return true;
+            } else {
+                for (var i in $scope.items) {
+                    if (!$scope.items[i].isTrash)
+                        return false;
+                }
+                return true;
+            }
+        }
 
-        $scope.toggleEdit = function (item) {
+        $scope.toggleEdit = function(item) {
             if (item.isEditing) {
                 item.isEditing = false;
+                $scope.selectedItem = {};
                 return;
             }
 
             for (var i in $scope.items)
                 $scope.items[i].isEditing = false;
-            item.isEditing = !item.isEditing;
+
+            unitDataService.getById(item.id).then(onSuccess, onError);
+
+            function onSuccess(data) {
+                $scope.selectedItem = data;
+                item.isEditing = true;
+            }
+            function onError() {
+
+            }
         };
+
+        $scope.setStatus = function(id, status) {
+            unitDataService.setStatus(id, status).then(onSuccess, onError);
+
+            function onSuccess(data) {
+                $scope.init();
+            }
+            function onError() {
+
+            }
+        }
+
+        $scope.setTrashStatus = function (id, status) {
+            unitDataService.setTrashStatus(id, status).then(onSuccess, onError);
+
+            function onSuccess(data) {
+                $scope.init();
+            }
+            function onError() {
+
+            }
+        }
+
+        $scope.update = function(id, item) {
+            
+        }
     }
 })();
