@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web.Http;
-using System.Web.Http.Description;
 using SaleAssistant.Business;
 using SaleAssistant.Business.Models;
 
@@ -17,120 +16,59 @@ namespace SaleAssistant.WebApi.Controllers
             this.productManagement = productManagement;
         }
 
-        //// GET: api/Products
-        //public IQueryable<Product> GetProducts()
-        //{
-        //    return db.Products;
-        //}
-
-        // GET: api/Products/5
-        [ResponseType(typeof(Product))]
-        [Route("~/api/product/{id:guid}", Name = "GetProductById")]
-        public IHttpActionResult GetProduct(Guid id)
+        [Route("", Name = "GetAllProduct")]
+        public IHttpActionResult GetAll()
         {
-            Product product = productManagement.GetById(id);
+            return Ok(productManagement.GetAll());
+        }
 
-            if (product == null)
+        [Route("{id:guid}", Name = "GetProductById")]
+        public IHttpActionResult Get(Guid id)
+        {
+            Product model = productManagement.GetById(id);
+
+            if (model == null)
             {
                 return NotFound();
             }
 
-            return Ok(product);
+            return Ok(model);
         }
 
-        //// PUT: api/Products/5
-        //[ResponseType(typeof(void))]
-        //public async Task<IHttpActionResult> PutProduct(Guid id, Product product)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        [Route("{id:guid}/updatestatus/{status:int}", Name = "UpdateProductStatus")]
+        public IHttpActionResult PutUpdateStatus(Guid id, Status status)
+        {
+            productManagement.SetStatus(id, status);
+            return Ok();
+        }
 
-        //    if (id != product.Id)
-        //    {
-        //        return BadRequest();
-        //    }
+        [Route("{id:guid}/updatetrashstatus/{isTrash:bool}", Name = "UpdateProductTrashStatus")]
+        public IHttpActionResult PutUpdateTrashStatus(Guid id, bool isTrash)
+        {
+            productManagement.SetTrashStatus(id, isTrash);
+            return Ok();
+        }
 
-        //    db.Entry(product).State = EntityState.Modified;
+        [Route("{id:guid}", Name = "UpdateProduct")]
+        public IHttpActionResult PutUpdate(Guid id, Product item)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            if (id != item.Id)
+                return BadRequest();
 
-        //    try
-        //    {
-        //        await db.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!ProductExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
+            productManagement.Update(item);
+            return Ok();
+        }
 
-        //    return StatusCode(HttpStatusCode.NoContent);
-        //}
+        [Route("", Name = "AddProduct")]
+        public IHttpActionResult PostAdd(Product item)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-        //// POST: api/Products
-        //[ResponseType(typeof(Product))]
-        //public async Task<IHttpActionResult> PostProduct(Product product)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    db.Products.Add(product);
-
-        //    try
-        //    {
-        //        await db.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateException)
-        //    {
-        //        if (ProductExists(product.Id))
-        //        {
-        //            return Conflict();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return CreatedAtRoute("DefaultApi", new { id = product.Id }, product);
-        //}
-
-        //// DELETE: api/Products/5
-        //[ResponseType(typeof(Product))]
-        //public async Task<IHttpActionResult> DeleteProduct(Guid id)
-        //{
-        //    Product product = await db.Products.FindAsync(id);
-        //    if (product == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    db.Products.Remove(product);
-        //    await db.SaveChangesAsync();
-
-        //    return Ok(product);
-        //}
-
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
-
-        //private bool ProductExists(Guid id)
-        //{
-        //    return db.Products.Count(e => e.Id == id) > 0;
-        //}
+            productManagement.Insert(item);
+            return Ok();
+        }
     }
 }

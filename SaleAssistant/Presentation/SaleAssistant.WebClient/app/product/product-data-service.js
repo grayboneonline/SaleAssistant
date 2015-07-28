@@ -1,12 +1,12 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('saleAssistant').factory('unitDataService', unitDataService);
+    angular.module('saleAssistant').factory('productDataService', productDataService);
 
-    unitDataService.$inject = ['$q', 'saHttpService'];
+    productDataService.$inject = ['$q', 'saHttpService'];
 
-    function unitDataService($q, saHttpService) {
-        var serviceBase = 'api/units/';
+    function productDataService($q, saHttpService) {
+        var serviceBase = 'api/products/';
         var service = {
             getAll: getAll,
             getById: getById,

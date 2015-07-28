@@ -2,7 +2,7 @@
 
 namespace SaleAssistant.Business.Models
 {
-    public class InventoryItem
+    public class InventoryItem : IBusinessModel
     {
         public Guid Id { get; set; }
         public Guid InventoryId { get; set; }

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web.Http;
-using System.Web.Http.Description;
 using SaleAssistant.Business;
 using SaleAssistant.Business.Models;
 
@@ -18,45 +16,58 @@ namespace SaleAssistant.WebApi.Controllers
             this.unitManagement = unitManagement;
         }
 
-        [ResponseType(typeof(Unit))]
-        [Route("{id:guid}", Name = "GetUnitById")]
-        public IHttpActionResult GetUnit(Guid id)
+        [Route("", Name = "GetAllUnit")]
+        public IHttpActionResult GetAll()
         {
-            Unit unit = unitManagement.GetById(id);
+            return Ok(unitManagement.GetAll());
+        }
 
-            if (unit == null)
+        [Route("{id:guid}", Name = "GetUnitById")]
+        public IHttpActionResult Get(Guid id)
+        {
+            Unit model = unitManagement.GetById(id);
+
+            if (model == null)
             {
                 return NotFound();
             }
 
-            return Ok(unit);
+            return Ok(model);
         }
 
-        [Route("", Name = "GetUnits")]
-        public IHttpActionResult GetUnits()
-        {
-            IList<Unit> units = unitManagement.GetAll();
-            return Ok(units);
-        }
-
-        [Route("{id:guid}/updatestatus/{status:int}", Name = "UpdateItemStatus")]
+        [Route("{id:guid}/updatestatus/{status:int}", Name = "UpdateUnitStatus")]
         public IHttpActionResult PutUpdateStatus(Guid id, Status status)
         {
             unitManagement.SetStatus(id, status);
             return Ok();
         }
 
-        [Route("{id:guid}/updatetrashstatus/{isTrash:int}", Name = "UpdateItemTrashStatus")]
-        public IHttpActionResult PutUpdateTrashStatus(Guid id, int isTrash)
+        [Route("{id:guid}/updatetrashstatus/{isTrash:bool}", Name = "UpdateUnitTrashStatus")]
+        public IHttpActionResult PutUpdateTrashStatus(Guid id, bool isTrash)
         {
-            unitManagement.SetTrashStatus(id, isTrash > 0);
+            unitManagement.SetTrashStatus(id, isTrash);
             return Ok();
         }
 
-        [Route("{id:guid}", Name = "UpdateItem")]
-        public IHttpActionResult PutUpdateUnit(Guid id, Unit unit)
+        [Route("{id:guid}", Name = "UpdateUnit")]
+        public IHttpActionResult PutUpdate(Guid id, Unit item)
         {
-            //unitManagement.SetStatus(id, status);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            if (id != item.Id)
+                return BadRequest();
+
+            unitManagement.Update(item);
+            return Ok();
+        }
+
+        [Route("", Name = "AddUnit")]
+        public IHttpActionResult PostAdd(Unit item)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            unitManagement.Insert(item);
             return Ok();
         }
     }

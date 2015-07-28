@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using SaleAssistant.Business.Models;
+using SaleAssistant.Data.Entities;
 using SaleAssistant.DataAccess;
 
 namespace SaleAssistant.Business
@@ -12,12 +14,11 @@ namespace SaleAssistant.Business
         void Insert(TModel item);
         void Delete(Guid id);
         void Update(TModel item);
-        void Save();
     }
 
     public abstract class EntityManagement<TEntity, TModel, TDA> : IEntityManagement<TModel>
-        where TEntity : class
-        where TModel : class
+        where TEntity : IEntity
+        where TModel : IBusinessModel
         where TDA : IEntityDA<TEntity>
     {
         protected TDA DA { get; set; }
@@ -40,20 +41,20 @@ namespace SaleAssistant.Business
         public void Insert(TModel item)
         {
             DA.Insert(Mapper.Map<TEntity>(item));
+            DA.Save();
         }
 
         public void Delete(Guid id)
         {
             DA.Delete(id);
+            DA.Save();
         }
 
         public void Update(TModel item)
         {
-            DA.Update(Mapper.Map<TEntity>(item));
-        }
-
-        public void Save()
-        {
+            TEntity entity = DA.GetById(item.Id);
+            Mapper.Map(item, entity);
+            DA.Update(entity);
             DA.Save();
         }
     }

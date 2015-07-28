@@ -1,60 +1,24 @@
-﻿<div layout="row" class="padding-left-right-10">
-    <h1 class="md-headline">Maintain units</h1>
+﻿<sa-admin-tile header="Maintain units">
     <span flex></span>
-    <md-button class="md-raised trash" aria-label="trash" ng-class="{'md-accent': inTrash}" ng-click="inTrash = !inTrash">Trash</md-button>
-</div>
-<div class="items-container padding-left-right-10" ng-init="init()">
-    <p ng-if="noItems()">There are no item here.</p>
-    <md-card ng-repeat="item in items | filter: trashFilter" class="tile" ng-class="{'active': item.isEditing}">
-        <div class="tile-container" layout="column">
-            <div class="tile-header" layout="row">
-                <div flex class="tile-title" ng-click="toggleEdit(item)" layout="row">
-                    <md-button class="md-icon-button" aria-label="edit">
-                        <md-icon md-svg-icon="assets/img/icons/keyboard-arrow-right.svg"></md-icon>
-                    </md-button>
-                    <p>{{ item.name }} </p>
-                </div>
-                <md-button class="md-icon-button tile-header-button" aria-label="visibility">
-                    <md-icon ng-if="item.status == 1" md-svg-icon="assets/img/icons/visibility-off.svg" ng-click="setStatus(item.id, 0)" class="s24"></md-icon>
-                    <md-icon ng-if="item.status != 1" md-svg-icon="assets/img/icons/visibility.svg" ng-click="setStatus(item.id, 1)" class="s24"></md-icon>
-                </md-button>
-                <md-button class="md-icon-button tile-header-button" aria-label="trash">
-                    <md-icon ng-if="item.isTrash != 1" md-svg-icon="assets/img/icons/delete.svg" ng-click="setTrashStatus(item.id, 1)" class="s24"></md-icon>
-                    <md-icon ng-if="item.isTrash == 1" md-svg-icon="assets/img/icons/reply.svg" ng-click="setTrashStatus(item.id, 0)" class="s24"></md-icon>
-                </md-button>
+    <form name="editForm">
+        <md-input-container>
+            <label>Name</label>
+            <input md-maxlength="50" required name="name" ng-model="selectedItem.name" />
+            <div ng-messages="editForm.name.$error">
+                <div ng-message="required">This is required.</div>
+                <div ng-message="md-maxlength">The name has to be less than 50 characters long.</div>
             </div>
-            <div class="tile-item-edit" ng-if="item.isEditing" layout="column">
-                <div layout="row">
-                    <span flex></span>
-                    <form name="editForm" flex>
-                        <md-input-container>
-                            <label>Name</label>
-                            <input md-maxlength="50" required name="name" ng-model="selectedItem.name" />
-                            <div ng-messages="editForm.name.$error">
-                                <div ng-message="required">This is required.</div>
-                                <div ng-message="md-maxlength">The name has to be less than 50 characters long.</div>
-                            </div>
-                        </md-input-container>
-                        <div layout="row">
-                            <md-select placeholder="Status" ng-model="selectedItem.status">
-                                <md-option value="1">Active</md-option>
-                                <md-option value="0">InActive</md-option>
-                            </md-select>
-                            <span flex></span>
-                            <md-switch class="md-primary" md-no-ink aria-label="isTrash" ng-model="selectedItem.isTrash">
-                                Trash
-                            </md-switch>
-                        </div>
-                    </form>
-                    <span flex></span>
-                </div>
-                <div layout="row">
-                    <span flex></span>
-                    <md-button class="md-raised md-primary">Save</md-button>
-                    <md-button class="md-raised md-secondary" ng-click="toggleEdit(item)">Cancel</md-button>
-                </div>
-            </div>
+        </md-input-container>
+        <div layout="row">
+            <md-select placeholder="Status" ng-model="selectedItem.status">
+                <md-option value="1">Active</md-option>
+                <md-option value="0">InActive</md-option>
+            </md-select>
+            <span flex></span>
+            <md-switch class="md-primary" md-no-ink aria-label="isTrash" ng-model="selectedItem.isTrash">
+                Trash
+            </md-switch>
         </div>
-        <md-divider></md-divider>
-    </md-card>
-</div>
+    </form>
+    <span flex></span>
+</sa-admin-tile>

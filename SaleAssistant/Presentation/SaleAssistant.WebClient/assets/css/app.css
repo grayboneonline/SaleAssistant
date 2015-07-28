@@ -8,13 +8,19 @@ button.md-button.logo {
 button.md-button.tile-header-button {
     margin: 0;
 }
+button.md-button.tile-header-button md-icon:focus{
+    outline: none;
+}
 button.md-button.trash {
     margin: 18px 0;
+}
+button.md-button.add {
+    margin: 16px 15px;
 }
 
 md-card.tile {
     border-radius: 0;
-    margin: 0;
+    margin: 1px;
 }
 md-card.tile.active {
     margin: 15px 0;

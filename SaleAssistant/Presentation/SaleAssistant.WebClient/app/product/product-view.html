@@ -1,0 +1,35 @@
+﻿<sa-admin-tile layout="column" layout-fill header="Maintain products">
+    <span flex></span>
+    <form name="editForm">
+        <div layout="row">
+            <md-input-container>
+                <label>Name</label>
+                <input md-maxlength="200" required name="name" ng-model="selectedItem.name" />
+                <div ng-messages="editForm.name.$error">
+                    <div ng-message="required">This is required.</div>
+                    <div ng-message="md-maxlength">The name has to be less than 200 characters long.</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Code</label>
+                <input md-maxlength="50" name="code" ng-model="selectedItem.code" />
+                <div ng-messages="editForm.code.$error">
+                    <div ng-message="md-maxlength">The code has to be less than 50 characters long.</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <md-select flex ng-model="selectedItem.unitId" placeholder="Unit">
+                <md-option ng-value="unit.id" ng-repeat="unit in units">{{unit.name}}</md-option>
+            </md-select>
+            <md-select flex placeholder="Status" ng-model="selectedItem.status">
+                <md-option value="1">Active</md-option>
+                <md-option value="0">InActive</md-option>
+            </md-select>
+            <md-switch flex class="md-primary" md-no-ink aria-label="isTrash" ng-model="selectedItem.isTrash">
+                Trash
+            </md-switch>
+        </div>
+    </form>
+    <span flex></span>
+</sa-admin-tile>

@@ -26,12 +26,15 @@
     <script src="app/shared/services/sa-http-service.js"></script>
     <script src="app/shared/services/sa-response-interceptor-service.js"></script>
     <script src="app/shared/services/session-service.js"></script>
+    <script src="app/shared/directives/sa-admin-tile-directive.js"></script>
     
     <script src="app/login/login-controller.js"></script>
     <script src="app/home/home-controller.js"></script>
     <script src="app/unit/unit-controller.js"></script>
+    <script src="app/product/product-controller.js"></script>
 
     <script src="app/unit/unit-data-service.js"></script>
+    <script src="app/product/product-data-service.js"></script>
     <script src="app/login/login-service.js"></script>
 </head>
 <body layout="column" ng-controller="globalController as globalCtrl">
@@ -55,11 +58,9 @@
                 </md-list>
             </md-content>
         </md-sidenav>
-        <md-content flex layout-padding>
-            <ng-view layout="column" layout-fill layout-align="top center">
-                
-            </ng-view>
-        </md-content>
+        <ng-view flex layout="column" layout-padding layout-align="top center">
+            
+        </ng-view>
     </section>
 </body>
 </html>

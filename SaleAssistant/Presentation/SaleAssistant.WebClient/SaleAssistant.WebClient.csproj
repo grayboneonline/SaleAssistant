@@ -61,8 +61,11 @@
     <Content Include="app\login\login-controller.js" />
     <Content Include="app\login\login-view.html" />
     <Content Include="app\login\login-service.js" />
-    <Content Include="app\shared\directives\sa-tile-directive.html" />
-    <Content Include="app\shared\directives\sa-tile-directive.js" />
+    <Content Include="app\product\product-controller.js" />
+    <Content Include="app\product\product-data-service.js" />
+    <Content Include="app\product\product-view.html" />
+    <Content Include="app\shared\directives\sa-admin-tile-directive.html" />
+    <Content Include="app\shared\directives\sa-admin-tile-directive.js" />
     <Content Include="app\shared\services\sa-http-service.js" />
     <Content Include="app\shared\services\sa-response-interceptor-service.js" />
     <Content Include="app\shared\services\session-service.js" />
@@ -78,6 +81,7 @@
     <Content Include="assets\img\icons\visibility-off.svg" />
     <Content Include="assets\img\icons\delete.svg" />
     <Content Include="assets\img\icons\reply.svg" />
+    <Content Include="assets\img\icons\add.svg" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

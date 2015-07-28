@@ -8,6 +8,7 @@ namespace SaleAssistant.Data.Entities
         public string Code { get; set; }
         public Status Status { get; set; }
         public Guid UnitId { get; set; }
+        public bool IsTrash{ get; set; }
 
         public virtual Unit Unit { get; set; }
     }

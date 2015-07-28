@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using SaleAssistant.Data;
+using SaleAssistant.Data.Entities;
 
 namespace SaleAssistant.DataAccess
 {
@@ -16,7 +17,7 @@ namespace SaleAssistant.DataAccess
         void Save();
     }
 
-    public abstract class EntityDA<TEntity> : IEntityDA<TEntity> where TEntity : class
+    public abstract class EntityDA<TEntity> : IEntityDA<TEntity> where TEntity : Entity
     {
         private readonly SaleAssistantDbContext dbContext;
 
