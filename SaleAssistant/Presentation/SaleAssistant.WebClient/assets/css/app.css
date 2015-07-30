@@ -2,6 +2,32 @@
     min-width: 260px;
     width: 260px;
 }
+.md-sidenav-left md-content, .md-sidenav-left.md-locked-open md-content {
+    background: transparent;
+}
+.sidenav-menu {
+    padding: 0;
+}
+.sidenav-menu a {
+    margin: 0;
+    padding: 0 20px;
+    text-align: left;
+}
+.sidenav-menu a:hover {
+    background-color: #ccc;
+}
+.sidenav-menu a.md-button {
+    border-radius: 0;
+}
+.sidenav-submenu {
+    padding: 0;
+}
+.sidenav-submenu a{
+    padding: 0 20px 0 40px;
+    text-transform: capitalize;
+    font-weight: normal;
+}
+
 button.md-button.logo {
     color: #FFF;
 }

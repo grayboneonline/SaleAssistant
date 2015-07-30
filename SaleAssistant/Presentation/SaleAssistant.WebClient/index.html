@@ -27,17 +27,22 @@
     <script src="app/shared/services/sa-response-interceptor-service.js"></script>
     <script src="app/shared/services/session-service.js"></script>
     <script src="app/shared/directives/sa-admin-tile-directive.js"></script>
-    
+
     <script src="app/login/login-controller.js"></script>
     <script src="app/home/home-controller.js"></script>
     <script src="app/unit/unit-controller.js"></script>
     <script src="app/product/product-controller.js"></script>
+    <script src="app/vendor/vendor-controller.js"></script>
+    <script src="app/customer/customer-controller.js"></script>
+    <script src="app/inventory/inventory-controller.js"></script>
+    <script src="app/inventoryitem/inventoryitem-controller.js"></script>
 
     <script src="app/unit/unit-data-service.js"></script>
     <script src="app/product/product-data-service.js"></script>
     <script src="app/vendor/vendor-data-service.js"></script>
     <script src="app/customer/customer-data-service.js"></script>
     <script src="app/inventory/inventory-data-service.js"></script>
+    <script src="app/inventoryitem/inventoryitem-data-service.js"></script>
     <script src="app/login/login-service.js"></script>
 </head>
 <body layout="column" ng-controller="globalController as globalCtrl">
@@ -52,17 +57,21 @@
     </md-toolbar>
     <section layout="row" flex>
         <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="showSidenav">
-            <md-content layout-padding ng-controller="sidenavController">
-                <md-list>
-                    <md-list-item ng-click="navigateTo(menu.url)" ng-repeat="menu in menus">
-                        <md-icon md-svg-icon="assets/img/icons/remove.svg"></md-icon>
-                        <p>{{ menu.name }}</p>
-                    </md-list-item>
-                </md-list>
+            <md-content ng-controller="sidenavController">
+                <ul class="sidenav-menu">
+                    <li ng-repeat="menu in menus2" layout="column">
+                        <md-button flex ng-href="{{ menu.url }}">{{ menu.name }}</md-button>
+                        <ul class="sidenav-submenu" ng-if="menu.type == 0">
+                            <li ng-repeat="submenu in menu.submenus" layout="column">
+                                <md-button flex ng-href="{{ submenu.url }}">{{ submenu.name }}</md-button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </md-content>
         </md-sidenav>
         <ng-view flex layout="column" layout-padding layout-align="top center">
-            
+
         </ng-view>
     </section>
 </body>

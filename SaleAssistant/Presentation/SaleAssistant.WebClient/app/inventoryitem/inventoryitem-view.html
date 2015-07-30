@@ -1,0 +1,76 @@
+﻿<div layout="row" class="padding-left-right-10">
+    <h1 class="md-headline">Maintain inventory items</h1>
+    <md-button class="md-fab md-primary md-mini add" aria-label="Add" ng-click="toggleAdd()">
+        <md-icon md-svg-src="assets/img/icons/add.svg" class="s24"></md-icon>
+    </md-button>
+</div>
+<md-content class="items-container padding-left-right-10" ng-init="init()" flex>
+    <p ng-if="noItems()">There are no item here.</p>
+    <md-card class="tile active" ng-if="isAdding">
+        <div class="tile-container" layout="column">
+            <div class="tile-header" layout="row">
+                <div flex class="tile-title" layout="row">
+                    <md-button md-no-ink class="md-icon-button" aria-label="add">
+                        <md-icon md-svg-icon="assets/img/icons/keyboard-arrow-right.svg"></md-icon>
+                    </md-button>
+                    <p>Add new item</p>
+                </div>
+            </div>
+            <div class="tile-item-edit" layout="column">
+                <div layout="row">
+                </div>
+                <div layout="row">
+                    <span flex></span>
+                    <md-button class="md-raised md-primary" ng-click="add()">Save</md-button>
+                    <md-button class="md-raised md-secondary" ng-click="toggleAdd()">Cancel</md-button>
+                </div>
+            </div>
+        </div>
+    </md-card>
+    <md-card ng-repeat="item in items" class="tile" ng-class="{'active': item.isEditing}">
+        <div class="tile-container" layout="column">
+            <div class="tile-header" layout="row">
+                <div flex class="tile-title" ng-click="toggleEdit(item)" layout="row">
+                    <md-button md-no-ink class="md-icon-button" aria-label="edit">
+                        <md-icon md-svg-icon="assets/img/icons/keyboard-arrow-right.svg"></md-icon>
+                    </md-button>
+                    <p>{{ item.product.name }} </p>
+                </div>
+                <md-button class="md-icon-button tile-header-button" aria-label="delete" ng-click="delete(item.id)">
+                    <md-icon md-svg-icon="assets/img/icons/delete.svg" class="s24"></md-icon>
+                </md-button>
+            </div>
+            <div class="tile-item-edit" ng-if="item.isEditing" layout="column">
+                <div layout="row">
+                    <span flex></span>
+                    <form name="editForm">
+                        <md-input-container>
+                            <label>Name</label>
+                            <input md-maxlength="50" required name="name" ng-model="selectedItem.name" />
+                            <div ng-messages="editForm.name.$error">
+                                <div ng-message="required">This is required.</div>
+                                <div ng-message="md-maxlength">The name has to be less than 50 characters long.</div>
+                            </div>
+                        </md-input-container>
+                        <div layout="row">
+                            <md-select placeholder="Status" ng-model="selectedItem.status">
+                                <md-option value="1">Active</md-option>
+                                <md-option value="0">InActive</md-option>
+                            </md-select>
+                            <span flex></span>
+                            <md-switch class="md-primary" md-no-ink aria-label="isTrash" ng-model="selectedItem.isTrash">
+                                Trash
+                            </md-switch>
+                        </div>
+                    </form>
+                    <span flex></span>
+                </div>
+                <div layout="row">
+                    <span flex></span>
+                    <md-button class="md-raised md-primary" ng-click="update()">Save</md-button>
+                    <md-button class="md-raised md-secondary" ng-click="toggleEdit(item)">Cancel</md-button>
+                </div>
+            </div>
+        </div>
+    </md-card>
+</md-content>

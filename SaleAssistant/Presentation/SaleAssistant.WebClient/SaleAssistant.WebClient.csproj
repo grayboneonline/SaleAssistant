@@ -61,6 +61,9 @@
     <Content Include="app\customer\customer-controller.js" />
     <Content Include="app\customer\customer-data-service.js" />
     <Content Include="app\customer\customer-view.html" />
+    <Content Include="app\inventoryitem\inventoryitem-controller.js" />
+    <Content Include="app\inventoryitem\inventoryitem-data-service.js" />
+    <Content Include="app\inventoryitem\inventoryitem-view.html" />
     <Content Include="app\inventory\inventory-controller.js" />
     <Content Include="app\inventory\inventory-data-service.js" />
     <Content Include="app\inventory\inventory-view.html" />
