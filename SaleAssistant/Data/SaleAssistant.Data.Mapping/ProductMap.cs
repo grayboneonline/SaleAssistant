@@ -27,6 +27,8 @@ namespace SaleAssistant.Data.Mapping
             HasRequired(x => x.Unit);
 
             Property(x => x.Status);
+
+            Property(x => x.IsTrash);
         }
     }
 }

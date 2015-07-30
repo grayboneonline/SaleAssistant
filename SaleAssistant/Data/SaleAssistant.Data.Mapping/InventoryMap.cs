@@ -19,6 +19,8 @@ namespace SaleAssistant.Data.Mapping
                 .HasMaxLength(200);
 
             Property(x => x.Status);
+
+            Property(x => x.IsTrash);
         }
     }
 }

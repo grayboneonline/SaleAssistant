@@ -58,6 +58,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.auth.js" />
+    <Content Include="app\customer\customer-controller.js" />
+    <Content Include="app\customer\customer-data-service.js" />
+    <Content Include="app\customer\customer-view.html" />
+    <Content Include="app\inventory\inventory-controller.js" />
+    <Content Include="app\inventory\inventory-data-service.js" />
+    <Content Include="app\inventory\inventory-view.html" />
     <Content Include="app\login\login-controller.js" />
     <Content Include="app\login\login-view.html" />
     <Content Include="app\login\login-service.js" />
@@ -73,6 +79,9 @@
     <Content Include="app\unit\unit-data-service.js" />
     <Content Include="app\unit\unit-view.html" />
     <Content Include="app\shared\sidenav-controller.js" />
+    <Content Include="app\vendor\vendor-controller.js" />
+    <Content Include="app\vendor\vendor-data-service.js" />
+    <Content Include="app\vendor\vendor-view.html" />
     <Content Include="assets\img\icons\menu.svg" />
     <Content Include="assets\img\icons\remove.svg" />
     <Content Include="app\app.route.js" />

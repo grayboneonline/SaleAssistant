@@ -1,7 +1,10 @@
-﻿namespace SaleAssistant.Data.Entities
+﻿using System;
+
+namespace SaleAssistant.Business.Models
 {
-    public class Inventory : Entity
+    public class Customer : IBusinessModel
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public Status Status { get; set; }
         public bool IsTrash { get; set; }

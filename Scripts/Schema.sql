@@ -52,6 +52,7 @@ CREATE TABLE [dbo].[Inventory](
 	[Id] [uniqueidentifier] NOT NULL DEFAULT(NEWSEQUENTIALID()),
 	[Name] [nvarchar](200) NOT NULL,
 	[Status] [int] NOT NULL,
+	[IsTrash] [bit] NOT NULL DEFAULT(0),
  CONSTRAINT [PK_dbo.Inventory] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -91,6 +92,7 @@ CREATE TABLE [dbo].[Vendor](
 	[Id] [uniqueidentifier] NOT NULL DEFAULT(NEWSEQUENTIALID()),
 	[Name] [nvarchar](200) NOT NULL,
 	[Status] [int] NOT NULL,
+	[IsTrash] [bit] NOT NULL DEFAULT(0),
  CONSTRAINT [PK_Vendor] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -103,6 +105,7 @@ CREATE TABLE [dbo].[Customer](
 	[Id] [uniqueidentifier] NOT NULL DEFAULT(NEWSEQUENTIALID()),
 	[Name] [nvarchar](200) NOT NULL,
 	[Status] [int] NOT NULL,
+	[IsTrash] [bit] NOT NULL DEFAULT(0),
  CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
