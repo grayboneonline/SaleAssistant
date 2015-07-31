@@ -19,6 +19,7 @@
             $scope.items = [];
             $scope.selectedItem = {};
             $scope.isAdding = false;
+            $scope.editForm = {};
 
             $scope.init = function () {
                 $scope.getAllPromise().then(onSuccess, onError);
@@ -106,6 +107,9 @@
             }
 
             $scope.update = function () {
+                if (!$scope.editForm.$valid)
+                    return;
+
                 $scope.updatePromise($scope.selectedItem.id, $scope.selectedItem).then(onSuccess, onError);
 
                 function onSuccess(data) {
@@ -117,6 +121,9 @@
             }
 
             $scope.add = function () {
+                if (!$scope.editForm.$valid)
+                    return;
+
                 $scope.addPromise($scope.selectedItem).then(onSuccess, onError);
 
                 function onSuccess(data) {
@@ -125,6 +132,10 @@
                 function onError() {
                     var a = 0;
                 }
+            }
+
+            $scope.setEditForm = function(form) {
+                $scope.editForm = form;
             }
 
             function cancelEdit() {

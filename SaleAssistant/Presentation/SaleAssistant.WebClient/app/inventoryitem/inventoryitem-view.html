@@ -19,10 +19,15 @@
             <div class="tile-item-edit" layout="column">
                 <div layout="row">
                     <span flex></span>
-                    <form name="editForm">
-                        <md-select flex ng-model="selectedItem.productId" placeholder="Product">
-                            <md-option ng-value="product.id" ng-repeat="product in products">{{product.name}}</md-option>
-                        </md-select>
+                    <form name="editForm" novalidate ng-init="setEditForm(this.editForm)">
+                        <md-input-container>
+                            <md-select flex ng-model="selectedItem.productId" name="product" placeholder="Product" required>
+                                <md-option ng-value="product.id" ng-repeat="product in products">{{product.name}}</md-option>
+                            </md-select>
+                            <div ng-messages="editForm.product.$error">
+                                <div ng-message="required">Required</div>
+                            </div>
+                        </md-input-container>
                         <md-input-container>
                             <label>Quantity</label>
                             <input required type="number" step="any" name="quantity" ng-model="selectedItem.quantity" min="0">
@@ -58,7 +63,7 @@
             <div class="tile-item-edit" ng-if="item.isEditing" layout="column">
                 <div layout="row">
                     <span flex></span>
-                    <form name="editForm">
+                    <form name="editForm" novalidate>
                         <md-select flex ng-model="selectedItem.productId" placeholder="Product">
                             <md-option ng-value="product.id" ng-repeat="product in products">{{product.name}}</md-option>
                         </md-select>

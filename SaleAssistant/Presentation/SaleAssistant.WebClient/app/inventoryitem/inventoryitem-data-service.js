@@ -13,6 +13,7 @@
             update: update,
             add: add,
             del: del,
+            getRemainProduct: getRemainProduct
         };
 
         return service;
@@ -35,6 +36,10 @@
 
         function del(id) {
             return saHttpService.del(serviceBase + id);
+        }
+
+        function getRemainProduct() {
+            return saHttpService.get(serviceBase + 'remainproducts');
         }
     }
 })();

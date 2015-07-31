@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using SaleAssistant.DataAccess;
 
 namespace SaleAssistant.Business
 {
@@ -7,13 +6,13 @@ namespace SaleAssistant.Business
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.Register(c => new ProductManagement(c.Resolve<IProductDA>())).As<IProductManagement>().SingleInstance();
-            builder.Register(c => new UnitManagement(c.Resolve<IUnitDA>())).As<IUnitManagement>().SingleInstance();
-            builder.Register(c => new VendorManagement(c.Resolve<IVendorDA>())).As<IVendorManagement>().SingleInstance();
-            builder.Register(c => new CustomerManagement(c.Resolve<ICustomerDA>())).As<ICustomerManagement>().SingleInstance();
-            builder.Register(c => new ProductPricingManagement(c.Resolve<IProductPricingDA>())).As<IProductPricingManagement>().SingleInstance();
-            builder.Register(c => new InventoryManagement(c.Resolve<IInventoryDA>())).As<IInventoryManagement>().SingleInstance();
-            builder.Register(c => new InventoryItemManagement(c.Resolve<IInventoryItemDA>())).As<IInventoryItemManagement>().SingleInstance();
+            builder.RegisterType<ProductManagement>().As<IProductManagement>().SingleInstance();
+            builder.RegisterType<UnitManagement>().As<IUnitManagement>().SingleInstance();
+            builder.RegisterType<VendorManagement>().As<IVendorManagement>().SingleInstance();
+            builder.RegisterType<CustomerManagement>().As<ICustomerManagement>().SingleInstance();
+            builder.RegisterType<ProductPricingManagement>().As<IProductPricingManagement>().SingleInstance();
+            builder.RegisterType<InventoryManagement>().As<IInventoryManagement>().SingleInstance();
+            builder.RegisterType<InventoryItemManagement>().As<IInventoryItemManagement>().SingleInstance();
         }
     }
 }

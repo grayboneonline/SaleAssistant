@@ -1,6 +1,6 @@
 ﻿<sa-admin-tile header="Maintain vendors">
     <span flex></span>
-    <form name="editForm">
+    <form name="editForm" novalidate ng-init="setEditForm(this.editForm)">
         <md-input-container>
             <label>Name</label>
             <input md-maxlength="50" required name="name" ng-model="selectedItem.name" />
@@ -10,10 +10,15 @@
             </div>
         </md-input-container>
         <div layout="row">
-            <md-select placeholder="Status" ng-model="selectedItem.status">
-                <md-option value="1">Active</md-option>
-                <md-option value="0">InActive</md-option>
-            </md-select>
+            <md-input-container>
+                <md-select placeholder="Status" name="status" ng-model="selectedItem.status" required>
+                    <md-option value="1">Active</md-option>
+                    <md-option value="0">InActive</md-option>
+                </md-select>
+                <div ng-messages="editForm.status.$error">
+                    <div ng-message="required">Required</div>
+                </div>
+            </md-input-container>
             <span flex></span>
             <md-switch class="md-primary" md-no-ink aria-label="isTrash" ng-model="selectedItem.isTrash">
                 Trash

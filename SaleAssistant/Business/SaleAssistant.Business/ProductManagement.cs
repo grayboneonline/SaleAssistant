@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using SaleAssistant.AutoMapper;
 using SaleAssistant.Business.Models;
 using SaleAssistant.DataAccess;
 
@@ -10,13 +13,16 @@ namespace SaleAssistant.Business
     {
         IList<ServiceError> SetStatus(Guid id, Status status);
         IList<ServiceError> SetTrashStatus(Guid id, bool isTrash);
+        IList<Product> GetProductNotExistsInInventory(Guid inventoryId);
     }
 
     public class ProductManagement : EntityManagement<Data.Entities.Product, Product, IProductDA>, IProductManagement
     {
-        public ProductManagement(IProductDA da)
+        private readonly IInventoryItemDA inventoryItemDA;
+        public ProductManagement(IProductDA da, IInventoryItemDA inventoryItemDA)
             : base(da)
         {
+            this.inventoryItemDA = inventoryItemDA;
         }
 
         public IList<ServiceError> SetStatus(Guid id, Status status)
@@ -49,6 +55,12 @@ namespace SaleAssistant.Business
                 DA.Save();
             }
             return errors;
+        }
+
+        public IList<Product> GetProductNotExistsInInventory(Guid inventoryId)
+        {
+            IList<Guid> productAddedIds = inventoryItemDA.GetByInventoryId(inventoryId).Select(x => x.ProductId).ToList();
+            return DA.GetAll().Where(x => !productAddedIds.Contains(x.Id)).MapTo<IList<Product>>();
         }
     }
 }

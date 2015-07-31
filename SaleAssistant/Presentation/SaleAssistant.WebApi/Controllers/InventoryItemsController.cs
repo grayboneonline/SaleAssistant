@@ -10,11 +10,17 @@ namespace SaleAssistant.WebApi.Controllers
     [RoutePrefix("api/inventoryitems")]
     public class InventoryItemsController : BaseApiController
     {
-        private readonly IInventoryItemManagement inventoryItemManagement;
+        // working with only 1 inventory first
+        private static readonly Guid InventoryId = new Guid("3A8ED735-F959-4D67-9E57-F781B746E0E9");
 
-        public InventoryItemsController(IInventoryItemManagement inventoryItemManagement)
+        private readonly IInventoryItemManagement inventoryItemManagement;
+        private readonly IProductManagement productManagement;
+
+        public InventoryItemsController(IInventoryItemManagement inventoryItemManagement,
+                                        IProductManagement productManagement)
         {
             this.inventoryItemManagement = inventoryItemManagement;
+            this.productManagement = productManagement;
         }
 
         [Route("", Name = "GetAllInventoryItem")]
@@ -36,6 +42,12 @@ namespace SaleAssistant.WebApi.Controllers
             return Ok(model);
         }
 
+        [Route("remainproducts", Name = "InventoryItem_GetRemainProducts")]
+        public IHttpActionResult GetRemainProducts()
+        {
+            return Ok(productManagement.GetProductNotExistsInInventory(InventoryId));
+        }
+
         [Route("{id:guid}", Name = "UpdateInventoryItem")]
         public IHttpActionResult PutUpdate(Guid id, InventoryItem item)
         {
@@ -54,7 +66,7 @@ namespace SaleAssistant.WebApi.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            item.InventoryId = new Guid("3A8ED735-F959-4D67-9E57-F781B746E0E9");
+            item.InventoryId = InventoryId;
 
             inventoryItemManagement.Insert(item);
             return Ok();
