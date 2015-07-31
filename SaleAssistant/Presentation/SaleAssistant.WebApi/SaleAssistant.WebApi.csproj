@@ -121,8 +121,9 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\BaseAccApiController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
-    <Compile Include="Controllers\InventoryItemController.cs" />
+    <Compile Include="Controllers\InventoryItemsController.cs" />
     <Compile Include="Controllers\InventoriesController.cs" />
     <Compile Include="Controllers\ProductPricingsController.cs" />
     <Compile Include="Controllers\UnitsController.cs" />

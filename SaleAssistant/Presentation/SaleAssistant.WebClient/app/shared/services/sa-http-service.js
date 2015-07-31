@@ -11,7 +11,8 @@
             get: get,
             post: post,
             postAsFormData: postAsFormData,
-            put: put
+            put: put,
+            del: del
         }
 
         return service;
@@ -73,6 +74,20 @@
             var deferred = $q.defer();
 
             $http.put(baseUrl + url, data, { async: true })
+                .success(function (data, status, headers, config) {
+                    deferred.resolve(data);
+                })
+                .error(function (data, status, headers, config) {
+                    deferred.reject({ data: data, status: status });
+                });
+
+            return deferred.promise;
+        }
+
+        function del(url, data) {
+            var deferred = $q.defer();
+
+            $http.delete(baseUrl + url, data, { async: true })
                 .success(function (data, status, headers, config) {
                     deferred.resolve(data);
                 })

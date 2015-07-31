@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Net;
 using SaleAssistant.Business.Models;
 using SaleAssistant.DataAccess;
 
@@ -6,8 +8,8 @@ namespace SaleAssistant.Business
 {
     public interface IProductManagement : IEntityManagement<Product>
     {
-        void SetStatus(Guid id, Status status);
-        void SetTrashStatus(Guid id, bool isTrash);
+        IList<ServiceError> SetStatus(Guid id, Status status);
+        IList<ServiceError> SetTrashStatus(Guid id, bool isTrash);
     }
 
     public class ProductManagement : EntityManagement<Data.Entities.Product, Product, IProductDA>, IProductManagement
@@ -17,20 +19,36 @@ namespace SaleAssistant.Business
         {
         }
 
-        public void SetStatus(Guid id, Status status)
+        public IList<ServiceError> SetStatus(Guid id, Status status)
         {
-            Data.Entities.Product unit = DA.GetById(id);
-            unit.Status = (Data.Entities.Status)status;
-            DA.Update(unit);
-            DA.Save();
+            IList<ServiceError> errors = new List<ServiceError>();
+            Data.Entities.Product product = DA.GetById(id);
+
+            if (product == null)
+                errors.Add(new ServiceError {FieldKey = "Id", Message = "", StatusCode = HttpStatusCode.NotFound});
+            else
+            {
+                product.Status = (Data.Entities.Status) status;
+                DA.Update(product);
+                DA.Save();
+            }
+            return errors;
         }
 
-        public void SetTrashStatus(Guid id, bool isTrash)
+        public IList<ServiceError> SetTrashStatus(Guid id, bool isTrash)
         {
-            Data.Entities.Product unit = DA.GetById(id);
-            unit.IsTrash = isTrash;
-            DA.Update(unit);
-            DA.Save();
+            IList<ServiceError> errors = new List<ServiceError>();
+            Data.Entities.Product product = DA.GetById(id);
+
+            if (product == null)
+                errors.Add(new ServiceError {FieldKey = "Id", Message = "", StatusCode = HttpStatusCode.NotFound});
+            else
+            {
+                product.IsTrash = isTrash;
+                DA.Update(product);
+                DA.Save();
+            }
+            return errors;
         }
     }
 }

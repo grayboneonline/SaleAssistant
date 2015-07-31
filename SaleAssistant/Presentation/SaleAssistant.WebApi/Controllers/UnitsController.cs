@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Http;
 using SaleAssistant.Business;
 using SaleAssistant.Business.Models;
@@ -7,7 +8,7 @@ namespace SaleAssistant.WebApi.Controllers
 {
     [Authorize]
     [RoutePrefix("api/units")]
-    public class UnitsController : ApiController
+    public class UnitsController : BaseApiController
     {
         private readonly IUnitManagement unitManagement;
 
@@ -38,15 +39,15 @@ namespace SaleAssistant.WebApi.Controllers
         [Route("{id:guid}/updatestatus/{status:int}", Name = "UpdateUnitStatus")]
         public IHttpActionResult PutUpdateStatus(Guid id, Status status)
         {
-            unitManagement.SetStatus(id, status);
-            return Ok();
+            IList<ServiceError> errors = unitManagement.SetStatus(id, status);
+            return HandleErrors(errors);
         }
 
         [Route("{id:guid}/updatetrashstatus/{isTrash:bool}", Name = "UpdateUnitTrashStatus")]
         public IHttpActionResult PutUpdateTrashStatus(Guid id, bool isTrash)
         {
-            unitManagement.SetTrashStatus(id, isTrash);
-            return Ok();
+            IList<ServiceError> errors = unitManagement.SetTrashStatus(id, isTrash);
+            return HandleErrors(errors);
         }
 
         [Route("{id:guid}", Name = "UpdateUnit")]
@@ -57,8 +58,8 @@ namespace SaleAssistant.WebApi.Controllers
             if (id != item.Id)
                 return BadRequest();
 
-            unitManagement.Update(item);
-            return Ok();
+            IList<ServiceError> errors = unitManagement.Update(item);
+            return HandleErrors(errors);
         }
 
         [Route("", Name = "AddUnit")]

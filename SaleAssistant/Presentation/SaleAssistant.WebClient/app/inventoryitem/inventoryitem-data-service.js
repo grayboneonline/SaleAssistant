@@ -12,6 +12,7 @@
             getById: getById,
             update: update,
             add: add,
+            del: del,
         };
 
         return service;
@@ -30,6 +31,10 @@
 
         function add(item) {
             return saHttpService.post(serviceBase, item);
+        }
+
+        function del(id) {
+            return saHttpService.del(serviceBase + id);
         }
     }
 })();

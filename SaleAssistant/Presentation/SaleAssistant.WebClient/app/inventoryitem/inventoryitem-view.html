@@ -18,6 +18,21 @@
             </div>
             <div class="tile-item-edit" layout="column">
                 <div layout="row">
+                    <span flex></span>
+                    <form name="editForm">
+                        <md-select flex ng-model="selectedItem.productId" placeholder="Product">
+                            <md-option ng-value="product.id" ng-repeat="product in products">{{product.name}}</md-option>
+                        </md-select>
+                        <md-input-container>
+                            <label>Quantity</label>
+                            <input required type="number" step="any" name="quantity" ng-model="selectedItem.quantity" min="0">
+                            <div ng-messages="editForm.quantity.$error">
+                                <div ng-message="required">This is required.</div>
+                                <div ng-message="min">Must be greater than 0.</div>
+                            </div>
+                        </md-input-container>
+                    </form>
+                    <span flex></span>
                 </div>
                 <div layout="row">
                     <span flex></span>
@@ -36,7 +51,7 @@
                     </md-button>
                     <p>{{ item.product.name }} </p>
                 </div>
-                <md-button class="md-icon-button tile-header-button" aria-label="delete" ng-click="delete(item.id)">
+                <md-button class="md-icon-button tile-header-button" aria-label="delete" ng-click="del(item.id)">
                     <md-icon md-svg-icon="assets/img/icons/delete.svg" class="s24"></md-icon>
                 </md-button>
             </div>
@@ -44,24 +59,17 @@
                 <div layout="row">
                     <span flex></span>
                     <form name="editForm">
+                        <md-select flex ng-model="selectedItem.productId" placeholder="Product">
+                            <md-option ng-value="product.id" ng-repeat="product in products">{{product.name}}</md-option>
+                        </md-select>
                         <md-input-container>
-                            <label>Name</label>
-                            <input md-maxlength="50" required name="name" ng-model="selectedItem.name" />
-                            <div ng-messages="editForm.name.$error">
+                            <label>Quantity</label>
+                            <input required type="number" step="any" name="quantity" ng-model="selectedItem.quantity" min="0">
+                            <div ng-messages="editForm.quantity.$error">
                                 <div ng-message="required">This is required.</div>
-                                <div ng-message="md-maxlength">The name has to be less than 50 characters long.</div>
+                                <div ng-message="min">Must be greater than 0.</div>
                             </div>
                         </md-input-container>
-                        <div layout="row">
-                            <md-select placeholder="Status" ng-model="selectedItem.status">
-                                <md-option value="1">Active</md-option>
-                                <md-option value="0">InActive</md-option>
-                            </md-select>
-                            <span flex></span>
-                            <md-switch class="md-primary" md-no-ink aria-label="isTrash" ng-model="selectedItem.isTrash">
-                                Trash
-                            </md-switch>
-                        </div>
                     </form>
                     <span flex></span>
                 </div>

@@ -12,7 +12,7 @@ namespace SaleAssistant.DataAccess
         IList<TEntity> GetAll();
         TEntity GetById(Guid id);
         void Insert(TEntity item);
-        void Delete(Guid id);
+        void Delete(TEntity item);
         void Update(TEntity item);
         void Save();
     }
@@ -44,10 +44,9 @@ namespace SaleAssistant.DataAccess
             DbSet.Add(item);
         }
 
-        public void Delete(Guid id)
+        public void Delete(TEntity item)
         {
-            TEntity product = DbSet.Find(id);
-            DbSet.Remove(product);
+            DbSet.Remove(item);
         }
 
         public void Update(TEntity item)

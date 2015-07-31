@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using System.Net;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using SaleAssistant.Business.Models;
@@ -12,12 +14,12 @@ namespace SaleAssistant.Business
         IList<TModel> GetAll();
         TModel GetById(Guid id);
         void Insert(TModel item);
-        void Delete(Guid id);
-        void Update(TModel item);
+        IList<ServiceError> Delete(Guid id);
+        IList<ServiceError> Update(TModel item);
     }
 
     public abstract class EntityManagement<TEntity, TModel, TDA> : IEntityManagement<TModel>
-        where TEntity : IEntity
+        where TEntity : class, IEntity
         where TModel : IBusinessModel
         where TDA : IEntityDA<TEntity>
     {
@@ -44,18 +46,37 @@ namespace SaleAssistant.Business
             DA.Save();
         }
 
-        public void Delete(Guid id)
+        public IList<ServiceError> Delete(Guid id)
         {
-            DA.Delete(id);
-            DA.Save();
+            IList<ServiceError> errors = new List<ServiceError>();
+            TEntity entity = DA.GetById(id);
+
+            if (entity == null)
+                errors.Add(new ServiceError { FieldKey = "Id", Message = "", StatusCode = HttpStatusCode.NotFound });
+
+            if (!errors.Any())
+            {
+                DA.Delete(entity);
+                DA.Save();
+            }
+            return errors;
         }
 
-        public void Update(TModel item)
+        public IList<ServiceError> Update(TModel item)
         {
+            IList<ServiceError> errors = new List<ServiceError>();
             TEntity entity = DA.GetById(item.Id);
-            Mapper.Map(item, entity);
-            DA.Update(entity);
-            DA.Save();
+
+            if (entity == null)
+                errors.Add(new ServiceError { FieldKey = "Id", Message = "", StatusCode = HttpStatusCode.NotFound });
+
+            if (!errors.Any())
+            {
+                Mapper.Map(item, entity);
+                DA.Update(entity);
+                DA.Save();
+            }
+            return errors;
         }
     }
 }

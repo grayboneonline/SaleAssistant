@@ -8,7 +8,7 @@ namespace SaleAssistant.WebApi.Controllers
 {
     [RoutePrefix("api/accounts")]
     [Authorize]
-    public class AccountsController : BaseApiController
+    public class AccountsController : BaseAccApiController
     {
         [Route("users")]
         public IHttpActionResult GetUsers()

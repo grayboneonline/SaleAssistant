@@ -1,15 +1,26 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace SaleAssistant.Business.Models
 {
     public class ProductPricing : IBusinessModel
     {
         public Guid Id { get; set; }
+
+        [Required]
         public Guid ProductId { get; set; }
         public Product Product { get; set; }
+
+        [Required]
         public decimal UnitPrice { get; set; }
+
+        [Required]
         public PricingType Type { get; set; }
+
+        [Required]
         public DateTime EffectiveDate { get; set; }
+
+        [Required]
         public DateTime CreatedDate { get; set; }
     }
 

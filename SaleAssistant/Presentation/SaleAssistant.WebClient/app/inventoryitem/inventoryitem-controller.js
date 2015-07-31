@@ -3,23 +3,24 @@
 
     angular.module('saleAssistant').controller('inventoryItemController', inventoryItemController);
 
-    inventoryItemController.$inject = ['$scope', 'inventoryItemDataService'];
+    inventoryItemController.$inject = ['$scope', 'inventoryItemDataService', 'productDataService'];
 
-    function inventoryItemController($scope, inventoryItemDataService) {
+    function inventoryItemController($scope, inventoryItemDataService, productDataService) {
         $scope.items = [];
         $scope.selectedItem = {};
         $scope.isAdding = false;
+        $scope.products = [];
 
         $scope.init = function () {
-            inventoryItemDataService.getAll().then(onSuccess, onError);
+            inventoryItemDataService.getAll().then(onSuccess);
 
             function onSuccess(data) {
                 $scope.items = data;
+                productDataService.getAll().then(function(productData) {
+                    $scope.products = productData;
+                });
                 cancelEdit();
                 cancelAdd();
-            }
-            function onError() {
-
             }
         }
 
@@ -37,14 +38,11 @@
             cancelEdit();
             cancelAdd();
 
-            inventoryItemDataService.getById(item.id).then(onSuccess, onError);
+            inventoryItemDataService.getById(item.id).then(onSuccess);
 
             function onSuccess(data) {
                 $scope.selectedItem = data;
                 item.isEditing = true;
-            }
-            function onError() {
-
             }
         };
 
@@ -55,22 +53,26 @@
         }
 
         $scope.update = function () {
-            inventoryItemDataService.update($scope.selectedItem.id, $scope.selectedItem).then(onSuccess, onError);
+            inventoryItemDataService.update($scope.selectedItem.id, $scope.selectedItem).then(onSuccess);
 
             function onSuccess(data) {
                 $scope.init();
-            }
-            function onError() {
             }
         }
 
         $scope.add = function () {
-            inventoryItemDataService.add($scope.selectedItem).then(onSuccess, onError);
+            inventoryItemDataService.add($scope.selectedItem).then(onSuccess);
 
             function onSuccess(data) {
                 $scope.init();
             }
-            function onError() {
+        }
+
+        $scope.del = function(id) {
+            inventoryItemDataService.del(id).then(onSuccess);
+
+            function onSuccess(data) {
+                $scope.init();
             }
         }
 

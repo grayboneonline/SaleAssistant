@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Http;
 using SaleAssistant.Business;
 using SaleAssistant.Business.Models;
@@ -7,7 +8,7 @@ namespace SaleAssistant.WebApi.Controllers
 {
     [Authorize]
     [RoutePrefix("api/vendors")]
-    public class VendorsController : ApiController
+    public class VendorsController : BaseApiController
     {
         private readonly IVendorManagement vendorManagement;
 
@@ -38,15 +39,15 @@ namespace SaleAssistant.WebApi.Controllers
         [Route("{id:guid}/updatestatus/{status:int}", Name = "UpdateVendorStatus")]
         public IHttpActionResult PutUpdateStatus(Guid id, Status status)
         {
-            vendorManagement.SetStatus(id, status);
-            return Ok();
+            IList<ServiceError> errors = vendorManagement.SetStatus(id, status);
+            return HandleErrors(errors);
         }
 
         [Route("{id:guid}/updatetrashstatus/{isTrash:bool}", Name = "UpdateVendorTrashStatus")]
         public IHttpActionResult PutUpdateTrashStatus(Guid id, bool isTrash)
         {
-            vendorManagement.SetTrashStatus(id, isTrash);
-            return Ok();
+            IList<ServiceError> errors = vendorManagement.SetTrashStatus(id, isTrash);
+            return HandleErrors(errors);
         }
 
         [Route("{id:guid}", Name = "UpdateVendor")]
@@ -57,8 +58,8 @@ namespace SaleAssistant.WebApi.Controllers
             if (id != item.Id)
                 return BadRequest();
 
-            vendorManagement.Update(item);
-            return Ok();
+            IList<ServiceError> errors = vendorManagement.Update(item);
+            return HandleErrors(errors);
         }
 
         [Route("", Name = "AddVendor")]
