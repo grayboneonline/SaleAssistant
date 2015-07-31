@@ -13,12 +13,12 @@
 
         $scope.init = function () {
             inventoryItemDataService.getAll().then(onSuccess);
+            productDataService.getAllVisible().then(function (productData) {
+                $scope.products = productData;
+            });
 
             function onSuccess(data) {
                 $scope.items = data;
-                productDataService.getAll().then(function(productData) {
-                    $scope.products = productData;
-                });
                 cancelEdit();
                 cancelAdd();
             }

@@ -9,6 +9,7 @@
         var serviceBase = 'api/inventories/';
         var service = {
             getAll: getAll,
+            getAllVisible: getAllVisible,
             getById: getById,
             setStatus: setStatus,
             setTrashStatus: setTrashStatus,
@@ -20,6 +21,10 @@
 
         function getAll() {
             return saHttpService.get(serviceBase);
+        }
+
+        function getAllVisible() {
+            return saHttpService.get(serviceBase + 'visible');
         }
 
         function getById(id) {

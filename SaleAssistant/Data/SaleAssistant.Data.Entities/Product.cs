@@ -11,5 +11,15 @@ namespace SaleAssistant.Data.Entities
         public bool IsTrash{ get; set; }
 
         public virtual Unit Unit { get; set; }
+
+        public override bool IsVisible
+        {
+            get { return !IsTrash && Status == Status.Active; }
+        }
+
+        public override bool IsRelationVisible
+        {
+            get { return Unit.IsVisible; }
+        }
     }
 }

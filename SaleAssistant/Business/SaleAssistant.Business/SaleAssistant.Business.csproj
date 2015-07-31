@@ -34,9 +34,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="AutoMapper">
-      <HintPath>..\..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
@@ -60,6 +57,10 @@
     <ProjectReference Include="..\..\Data\SaleAssistant.Data.Entities\SaleAssistant.Data.Entities.csproj">
       <Project>{243788c7-491b-4556-8697-3ffb0fe1e454}</Project>
       <Name>SaleAssistant.Data.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SaleAssistant.AutoMapper\SaleAssistant.AutoMapper.csproj">
+      <Project>{60320E6F-6436-4787-91CF-380ADF0547AA}</Project>
+      <Name>SaleAssistant.AutoMapper</Name>
     </ProjectReference>
     <ProjectReference Include="..\SaleAssistant.Business.Models\SaleAssistant.Business.Models.csproj">
       <Project>{24a50cbb-8eab-4f47-8a19-ff1983e4a387}</Project>

@@ -20,7 +20,7 @@ namespace SaleAssistant.WebApi.Controllers
         [Route("", Name = "GetAllInventoryItem")]
         public IHttpActionResult GetAll()
         {
-            return Ok(inventoryItemManagement.GetAll());
+            return Ok(inventoryItemManagement.GetAll(relationVisible: true));
         }
 
         [Route("{id:guid}", Name = "GetInventoryItemById")]

@@ -21,4 +21,17 @@ namespace SaleAssistant.AutoMapper
             Mapper.CreateMap<TRight, TLeft>();
         }
     }
+
+    public static class AutoMapperExtensions
+    {
+        public static T MapTo<T>(this object source)
+        {
+            return Mapper.Map<T>(source);
+        }
+
+        public static void MapTo(this object source, object destination)
+        {
+            Mapper.Map(source, destination);
+        }
+    }
 }

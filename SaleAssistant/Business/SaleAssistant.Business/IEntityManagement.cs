@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System.Net;
-using AutoMapper;
 using System;
 using System.Collections.Generic;
+using SaleAssistant.AutoMapper;
 using SaleAssistant.Business.Models;
 using SaleAssistant.Data.Entities;
 using SaleAssistant.DataAccess;
@@ -11,7 +11,7 @@ namespace SaleAssistant.Business
 {
     public interface IEntityManagement<TModel>
     {
-        IList<TModel> GetAll();
+        IList<TModel> GetAll(bool visible = false, bool relationVisible = false);
         TModel GetById(Guid id);
         void Insert(TModel item);
         IList<ServiceError> Delete(Guid id);
@@ -30,23 +30,29 @@ namespace SaleAssistant.Business
             DA = da;
         }
 
-        public IList<TModel> GetAll()
+        public virtual IList<TModel> GetAll(bool visible, bool relationVisible)
         {
-            return Mapper.Map<IList<TModel>>(DA.GetAll());
+            IEnumerable<TEntity> list = DA.GetAll();
+            if (visible)
+                list = list.Where(x => x.IsVisible);
+            if (relationVisible)
+                list = list.Where(x => x.IsRelationVisible);
+
+            return list.MapTo<IList<TModel>>();
         }
 
-        public TModel GetById(Guid id)
+        public virtual TModel GetById(Guid id)
         {
-            return Mapper.Map<TModel>(DA.GetById(id));
+            return DA.GetById(id).MapTo<TModel>();
         }
 
-        public void Insert(TModel item)
+        public virtual void Insert(TModel item)
         {
-            DA.Insert(Mapper.Map<TEntity>(item));
+            DA.Insert(item.MapTo<TEntity>());
             DA.Save();
         }
 
-        public IList<ServiceError> Delete(Guid id)
+        public virtual IList<ServiceError> Delete(Guid id)
         {
             IList<ServiceError> errors = new List<ServiceError>();
             TEntity entity = DA.GetById(id);
@@ -62,7 +68,7 @@ namespace SaleAssistant.Business
             return errors;
         }
 
-        public IList<ServiceError> Update(TModel item)
+        public virtual IList<ServiceError> Update(TModel item)
         {
             IList<ServiceError> errors = new List<ServiceError>();
             TEntity entity = DA.GetById(item.Id);
@@ -72,7 +78,7 @@ namespace SaleAssistant.Business
 
             if (!errors.Any())
             {
-                Mapper.Map(item, entity);
+                item.MapTo(entity);
                 DA.Update(entity);
                 DA.Save();
             }

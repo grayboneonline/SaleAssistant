@@ -23,6 +23,12 @@ namespace SaleAssistant.WebApi.Controllers
             return Ok(vendorManagement.GetAll());
         }
 
+        [Route("visible", Name = "GetAllVisibleVendor")]
+        public IHttpActionResult GetAllVisible()
+        {
+            return Ok(vendorManagement.GetAll(true));
+        }
+
         [Route("{id:guid}", Name = "GetVendorById")]
         public IHttpActionResult Get(Guid id)
         {

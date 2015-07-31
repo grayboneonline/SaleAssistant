@@ -20,7 +20,13 @@ namespace SaleAssistant.WebApi.Controllers
         [Route("", Name = "GetAllProduct")]
         public IHttpActionResult GetAll()
         {
-            return Ok(productManagement.GetAll());
+            return Ok(productManagement.GetAll(relationVisible: true));
+        }
+
+        [Route("visible", Name = "GetAllVisibleProduct")]
+        public IHttpActionResult GetAllVisible()
+        {
+            return Ok(productManagement.GetAll(true, true));
         }
 
         [Route("{id:guid}", Name = "GetProductById")]

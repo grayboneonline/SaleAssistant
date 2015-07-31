@@ -6,7 +6,7 @@
     productController.$inject = ['$scope', 'productDataService', 'unitDataService'];
 
     function productController($scope, productDataService, unitDataService) {
-        $scope.getAllPromise = productDataService.getAll;
+        $scope.getAllPromise = productDataService.getAllVisible;
         $scope.getByIdPromise = productDataService.getById;
         $scope.setStatusPromise = productDataService.setStatus;
         $scope.setTrashStatusPromise = productDataService.setTrashStatus;
@@ -15,7 +15,7 @@
 
         $scope.units = [];
         $scope.loadData = function() {
-            unitDataService.getAll().then(onSuccess, onError);
+            unitDataService.getAllVisible().then(onSuccess, onError);
 
             function onSuccess(data) {
                 $scope.units = data;

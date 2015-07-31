@@ -23,6 +23,12 @@ namespace SaleAssistant.WebApi.Controllers
             return Ok(unitManagement.GetAll());
         }
 
+        [Route("visible", Name = "GetAllVisibleUnit")]
+        public IHttpActionResult GetAllVisible()
+        {
+            return Ok(unitManagement.GetAll(true));
+        }
+
         [Route("{id:guid}", Name = "GetUnitById")]
         public IHttpActionResult Get(Guid id)
         {

@@ -17,10 +17,16 @@ namespace SaleAssistant.WebApi.Controllers
             this.inventoryManagement = inventoryManagement;
         }
 
-        [Route("", Name = "GetAllInventory")]
+        [Route("", Name = "GetAllInventories")]
         public IHttpActionResult GetAll()
         {
             return Ok(inventoryManagement.GetAll());
+        }
+
+        [Route("visible", Name = "GetAllVisibleInventories")]
+        public IHttpActionResult GetAllVisible()
+        {
+            return Ok(inventoryManagement.GetAll(true));
         }
 
         [Route("{id:guid}", Name = "GetInventoryById")]
