@@ -77,10 +77,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthenticationServerConfig.cs" />
+    <Compile Include="AuthRepository.cs" />
+    <Compile Include="Infrastucture\AppClient.cs" />
+    <Compile Include="Infrastucture\RefreshToken.cs" />
     <Compile Include="Infrastucture\UserIdentityManager.cs" />
-    <Compile Include="Migrations\201507180645274_InitialCreate.cs" />
-    <Compile Include="Migrations\201507180645274_InitialCreate.Designer.cs">
-      <DependentUpon>201507180645274_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201508011557029_Initial.cs" />
+    <Compile Include="Migrations\201508011557029_Initial.Designer.cs">
+      <DependentUpon>201508011557029_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OAuthTokenExtensions.cs" />
@@ -89,21 +92,22 @@
     <Compile Include="Infrastucture\UserIdentityDbContext.cs" />
     <Compile Include="Providers\CustomJwtFormat.cs" />
     <Compile Include="Providers\CustomOAuthProvider .cs" />
+    <Compile Include="Providers\RefreshTokenProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507180645274_InitialCreate.resx">
-      <DependentUpon>201507180645274_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Core.Common\Core.Common.csproj">
       <Project>{E6E06586-86CF-41FE-BA85-FD89F661C513}</Project>
       <Name>Core.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201508011557029_Initial.resx">
+      <DependentUpon>201508011557029_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

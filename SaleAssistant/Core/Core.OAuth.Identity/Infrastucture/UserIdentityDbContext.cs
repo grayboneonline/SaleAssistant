@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using System.Data.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Core.OAuth.Identity.Infrastucture
 {
@@ -10,9 +11,7 @@ namespace Core.OAuth.Identity.Infrastucture
             Configuration.LazyLoadingEnabled = false;
         }
 
-        public static UserIdentityDbContext Create()
-        {
-            return new UserIdentityDbContext();
-        }
+        public DbSet<AppClient> Clients { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
     }
 }

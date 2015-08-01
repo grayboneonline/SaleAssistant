@@ -11,10 +11,11 @@
             if (!$scope.loginForm.$valid)
                 return;
 
-            loginService.login($scope.username, $scope.password).then(onSuccess, onError);
+            loginService.login($scope.username, $scope.password, sessionService.getClientId()).then(onSuccess, onError);
 
             function onSuccess(data) {
                 sessionService.setAccessToken(data.access_token);
+                sessionService.setRefreshToken(data.refresh_token);
                 $location.path('/');
             }
             function onError(data) {

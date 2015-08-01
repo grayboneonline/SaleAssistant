@@ -74,6 +74,7 @@
     <Content Include="app\product\product-view.html" />
     <Content Include="app\shared\directives\sa-admin-tile-directive.html" />
     <Content Include="app\shared\directives\sa-admin-tile-directive.js" />
+    <Content Include="app\shared\http-auth-interceptor.js" />
     <Content Include="app\shared\services\sa-http-service.js" />
     <Content Include="app\shared\http-request-response.js" />
     <Content Include="app\shared\services\session-service.js" />

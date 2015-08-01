@@ -16,21 +16,9 @@
             responseError: function (rejection) {
                 $rootScope.isAjaxLoading = false;
 
-                if (rejection.status === 401) {
-                    $location.path('/login');
-                    // handle refresh token here.
-                    //var token = $rootScope.refresh_token;
-
-                    //authFactory.save({
-                    //    client_id: 'client_id',
-                    //    grant_type: 'refresh_token',
-                    //    // refresh_token: token, sent with the encrypted cookie
-                    //}, function (obj) {
-                    //    //update access_token
-                    //}, function () {
-                    //    //redirect to login page
-                    //});
-                }
+                //if (rejection.status === 401) {
+                //    $location.path('/login');
+                //}
                 return $q.reject(rejection);
             }
         }
@@ -42,9 +30,9 @@
         $httpProvider.interceptors.push('responseInterceptor');
     }
 
-    modifyRequest.$inject = ['$rootScope', '$injector', 'sessionService'];
+    modifyRequest.$inject = ['$rootScope', '$injector', 'sessionService', 'authService', '$location'];
 
-    function modifyRequest($rootScope, $injector, sessionService) {
+    function modifyRequest($rootScope, $injector, sessionService, authService, $location) {
         $injector.get("$http").defaults.transformRequest = function (data, headersGetter) {
             $rootScope.isAjaxLoading = true;
 
@@ -52,5 +40,21 @@
                 headersGetter()['Authorization'] = "Bearer " + sessionService.getAccessToken();
             if (data) return angular.toJson(data);
         };
+
+        $rootScope.$on('event:auth-loginRequired', function() {
+            var loginService = $injector.get('loginService');
+            loginService.refreshAccessToken(sessionService.getRefreshToken(), sessionService.getClientId()).then(onSuccess, onError);
+
+            function onSuccess(data) {
+                sessionService.setAccessToken(data.access_token);
+                sessionService.setRefreshToken(data.refresh_token);
+                authService.loginConfirmed();
+            }
+            function onError() {
+                sessionService.setAccessToken(undefined);
+                sessionService.setRefreshToken(undefined);
+                $location.path('/login');
+            }
+        });
     }
 })();

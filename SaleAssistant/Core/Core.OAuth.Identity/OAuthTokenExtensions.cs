@@ -1,5 +1,5 @@
 ﻿using System;
-using Core.OAuth.Identity.Infrastucture;
+using System.Security.Cryptography;
 using Core.OAuth.Identity.Providers;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
@@ -14,10 +14,6 @@ namespace Core.OAuth.Identity
     {
         public static void ConfigureOAuthTokenGeneration(this IAppBuilder app)
         {
-            // Configure the db context and user manager to use a single instance per request
-            app.CreatePerOwinContext(UserIdentityDbContext.Create);
-            app.CreatePerOwinContext<UserIdentityManager>(UserIdentityManager.Create);
-
             OAuthAuthorizationServerOptions oAuthServerOptions = new OAuthAuthorizationServerOptions
             {
                 //For Dev enviroment only (on production should be AllowInsecureHttp = false)
@@ -25,6 +21,7 @@ namespace Core.OAuth.Identity
                 TokenEndpointPath = new PathString(AuthenticationServerConfig.TokenEndpointPath),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(10),
                 Provider = new CustomOAuthProvider(),
+                RefreshTokenProvider = new RefreshTokenProvider(),
                 AccessTokenFormat = new CustomJwtFormat(AuthenticationServerConfig.Issuer)
             };
 
@@ -47,6 +44,17 @@ namespace Core.OAuth.Identity
                         new SymmetricKeyIssuerSecurityTokenProvider(issuer, audienceSecret)
                     }
                 });
+        }
+
+        public static string GetHashSHA256(this string input)
+        {
+            HashAlgorithm hashAlgorithm = new SHA256CryptoServiceProvider();
+       
+            byte[] byteValue = System.Text.Encoding.UTF8.GetBytes(input);
+
+            byte[] byteHash = hashAlgorithm.ComputeHash(byteValue);
+
+            return Convert.ToBase64String(byteHash);
         }
     }
 }
