@@ -67,6 +67,18 @@ md-card.tile .tile-item-edit {
     padding: 0 10px 10px 10px;
 }
 
+.ajax-loading {
+    top: 0;
+    display: none;
+}
+.ajax-loading.active {
+    display: block;
+}
+.ajax-loading .progress-circular {
+    top: 45%;
+    left: 50%;
+}
+
 md-icon.s16 {
     height: 16px;
     width: 16px;
@@ -82,3 +94,4 @@ md-icon.s24 {
 .padding-right-10, .padding-left-right-10 {
     padding-right: 10px;
 }
+

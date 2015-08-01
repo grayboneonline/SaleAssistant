@@ -57,7 +57,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\app.auth.js" />
     <Content Include="app\customer\customer-controller.js" />
     <Content Include="app\customer\customer-data-service.js" />
     <Content Include="app\customer\customer-view.html" />
@@ -76,7 +75,7 @@
     <Content Include="app\shared\directives\sa-admin-tile-directive.html" />
     <Content Include="app\shared\directives\sa-admin-tile-directive.js" />
     <Content Include="app\shared\services\sa-http-service.js" />
-    <Content Include="app\shared\services\sa-response-interceptor-service.js" />
+    <Content Include="app\shared\http-request-response.js" />
     <Content Include="app\shared\services\session-service.js" />
     <Content Include="app\unit\unit-controller.js" />
     <Content Include="app\unit\unit-data-service.js" />

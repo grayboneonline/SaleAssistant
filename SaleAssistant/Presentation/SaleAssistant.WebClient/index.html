@@ -20,11 +20,10 @@
 
     <script src="app/app.module.js"></script>
     <script src="app/app.route.js"></script>
-    <script src="app/app.auth.js"></script>
     <script src="app/shared/global-controller.js"></script>
     <script src="app/shared/sidenav-controller.js"></script>
+    <script src="app/shared/http-request-response.js"></script>
     <script src="app/shared/services/sa-http-service.js"></script>
-    <script src="app/shared/services/sa-response-interceptor-service.js"></script>
     <script src="app/shared/services/session-service.js"></script>
     <script src="app/shared/directives/sa-admin-tile-directive.js"></script>
 
@@ -74,5 +73,8 @@
 
         </ng-view>
     </section>
+    <md-backdrop class="md-opaque md-default-theme ajax-loading" ng-class="{active: $root.isAjaxLoading}">
+        <md-progress-circular flex class="md-accent progress-circular" md-mode="indeterminate"></md-progress-circular>
+    </md-backdrop>
 </body>
 </html>

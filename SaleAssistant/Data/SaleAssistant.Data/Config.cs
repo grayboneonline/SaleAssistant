@@ -11,7 +11,7 @@
 
         public static IConfig DevEnvironment
         {
-            get { return new Config { ConnectionString = "Data Source=.;Initial Catalog=SaleAssistant;User ID=sa;Password=sa123" }; }
+            get { return new Config { ConnectionString = "Data Source=.;Initial Catalog=SaleAssistant;User ID=sa;Password=sa123;MultipleActiveResultSets=true" }; }
         }
     }
 }
