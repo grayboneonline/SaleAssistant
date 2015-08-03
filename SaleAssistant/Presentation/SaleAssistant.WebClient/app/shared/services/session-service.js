@@ -7,7 +7,6 @@
 
     function sessionService($localStorage) {
         var service = {
-            isLogged: isLogged,
             getAccessToken: getAccessToken,
             setAccessToken: setAccessToken,
             getRefreshToken: getRefreshToken,
@@ -28,9 +27,6 @@
         }
         function setRefreshToken(token) {
             $localStorage.refreshToken = token;
-        }
-        function isLogged() {
-            return $localStorage.accessToken != undefined;
         }
         function getClientId() {
             return 'angularApp';

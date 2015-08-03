@@ -19,7 +19,7 @@ namespace Core.OAuth.Identity
                 //For Dev enviroment only (on production should be AllowInsecureHttp = false)
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString(AuthenticationServerConfig.TokenEndpointPath),
-                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(10),
+                AccessTokenExpireTimeSpan = TimeSpan.FromSeconds(25),
                 Provider = new CustomOAuthProvider(),
                 RefreshTokenProvider = new RefreshTokenProvider(),
                 AccessTokenFormat = new CustomJwtFormat(AuthenticationServerConfig.Issuer)

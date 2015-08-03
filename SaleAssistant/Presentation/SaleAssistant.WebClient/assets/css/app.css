@@ -68,6 +68,7 @@ md-card.tile .tile-item-edit {
 }
 
 .ajax-loading {
+    z-index: 999;
     top: 0;
     display: none;
 }

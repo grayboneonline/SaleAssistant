@@ -26,15 +26,14 @@
 
                 function onSuccess(data) {
                     $scope.items = data;
+                    if ($scope.loadData)
+                        $scope.loadData();
                     cancelEdit();
                     cancelAdd();
                 }
                 function onError() {
 
                 }
-
-                if ($scope.loadData)
-                    $scope.loadData();
             }
 
             $scope.trashFilter = function (item) {

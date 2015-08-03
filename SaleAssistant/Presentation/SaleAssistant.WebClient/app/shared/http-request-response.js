@@ -1,24 +1,27 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('saleAssistant').factory('responseInterceptor', responseInterceptor)
+    angular.module('saleAssistant').factory('httpInterceptor', httpInterceptor)
                                    .config(httpConfig)
-                                   .run(modifyRequest);
+                                   .run(eventHandler);
 
-    responseInterceptor.$inject = ['$q', '$location', '$rootScope'];
+    httpInterceptor.$inject =['$q', '$location', '$rootScope', 'sessionService'];
 
-    function responseInterceptor($q, $location, $rootScope) {
+    function httpInterceptor($q, $location, $rootScope, sessionService) {
         return {
-            response: function (response) {
+            request: function($config) {
+                $rootScope.isAjaxLoading = true;
+                if (sessionService.getAccessToken()) {
+                    $config.headers['Authorization'] = "Bearer " + sessionService.getAccessToken();
+                }
+                return $config;
+            },
+            response: function(response) {
                 $rootScope.isAjaxLoading = false;
                 return response || $q.when(response);
             },
-            responseError: function (rejection) {
+            responseError: function(rejection) {
                 $rootScope.isAjaxLoading = false;
-
-                //if (rejection.status === 401) {
-                //    $location.path('/login');
-                //}
                 return $q.reject(rejection);
             }
         }
@@ -27,30 +30,27 @@
     httpConfig.$inject = ['$httpProvider'];
 
     function httpConfig($httpProvider) {
-        $httpProvider.interceptors.push('responseInterceptor');
+        $httpProvider.interceptors.push('httpInterceptor');
     }
 
-    modifyRequest.$inject = ['$rootScope', '$injector', 'sessionService', 'authService', '$location'];
+    eventHandler.$inject = ['$rootScope', '$injector', 'sessionService', 'authService', '$location', 'loginService'];
 
-    function modifyRequest($rootScope, $injector, sessionService, authService, $location) {
-        $injector.get("$http").defaults.transformRequest = function (data, headersGetter) {
-            $rootScope.isAjaxLoading = true;
-
-            if (sessionService.isLogged())
-                headersGetter()['Authorization'] = "Bearer " + sessionService.getAccessToken();
-            if (data) return angular.toJson(data);
-        };
+    function eventHandler($rootScope, $injector, sessionService, authService, $location, loginService) {
 
         $rootScope.$on('event:auth-loginRequired', function() {
-            var loginService = $injector.get('loginService');
-            loginService.refreshAccessToken(sessionService.getRefreshToken(), sessionService.getClientId()).then(onSuccess, onError);
+            if (!$rootScope.isRefreshingToken) {
+                $rootScope.isRefreshingToken = true;
+                loginService.refreshAccessToken(sessionService.getRefreshToken(), sessionService.getClientId()).then(onSuccess, onError);
+            }
 
             function onSuccess(data) {
+                $rootScope.isRefreshingToken = false;
                 sessionService.setAccessToken(data.access_token);
                 sessionService.setRefreshToken(data.refresh_token);
                 authService.loginConfirmed();
             }
             function onError() {
+                $rootScope.isRefreshingToken = false;
                 sessionService.setAccessToken(undefined);
                 sessionService.setRefreshToken(undefined);
                 $location.path('/login');

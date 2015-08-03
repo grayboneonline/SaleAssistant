@@ -3,9 +3,9 @@
 
     angular.module('saleAssistant').controller('inventoryItemController', inventoryItemController);
 
-    inventoryItemController.$inject = ['$scope', 'inventoryItemDataService'];
+    inventoryItemController.$inject = ['$scope', 'inventoryItemDataService', '$q'];
 
-    function inventoryItemController($scope, inventoryItemDataService) {
+    function inventoryItemController($scope, inventoryItemDataService, $q) {
         $scope.items = [];
         $scope.selectedItem = {};
         $scope.isAdding = false;
@@ -13,16 +13,15 @@
         $scope.editForm = {};
 
         $scope.init = function () {
-            inventoryItemDataService.getAll().then(onSuccess);
-            inventoryItemDataService.getRemainProduct().then(function (productData) {
-                $scope.products = productData;
-            });
+            var inventoryItems = inventoryItemDataService.getAll();
+            var products = inventoryItemDataService.getRemainProduct();
 
-            function onSuccess(data) {
-                $scope.items = data;
+            $q.all([inventoryItems, products]).then(function(data) {
+                $scope.items = data[0];
+                $scope.products = data[1];
                 cancelEdit();
                 cancelAdd();
-            }
+            });
         }
 
         $scope.noItems = function () {
