@@ -17,15 +17,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-messages.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+    <script src="assets/libs/http-auth-interceptor.js"></script>
 
-    <script src="app/app.module.js"></script>
-    <script src="app/app.route.js"></script>
+    <script src="app/app.js"></script>
     <script src="app/shared/global-controller.js"></script>
-    <script src="app/shared/sidenav-controller.js"></script>
-    <script src="app/shared/http-request-response.js"></script>
-    <script src="app/shared/http-auth-interceptor.js"></script>
     <script src="app/shared/services/sa-http-service.js"></script>
-    <script src="app/shared/services/session-service.js"></script>
+    <script src="app/shared/services/sa-session-service.js"></script>
     <script src="app/shared/directives/sa-admin-tile-directive.js"></script>
 
     <script src="app/login/login-controller.js"></script>
@@ -34,16 +31,14 @@
     <script src="app/product/product-controller.js"></script>
     <script src="app/vendor/vendor-controller.js"></script>
     <script src="app/customer/customer-controller.js"></script>
-    <script src="app/inventory/inventory-controller.js"></script>
     <script src="app/inventoryitem/inventoryitem-controller.js"></script>
 
+    <script src="app/login/login-service.js"></script>
     <script src="app/unit/unit-data-service.js"></script>
     <script src="app/product/product-data-service.js"></script>
     <script src="app/vendor/vendor-data-service.js"></script>
     <script src="app/customer/customer-data-service.js"></script>
-    <script src="app/inventory/inventory-data-service.js"></script>
     <script src="app/inventoryitem/inventoryitem-data-service.js"></script>
-    <script src="app/login/login-service.js"></script>
 </head>
 <body layout="column" ng-controller="globalController as globalCtrl">
     <md-toolbar>
@@ -56,10 +51,10 @@
         </div>
     </md-toolbar>
     <section layout="row" flex>
-        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="showSidenav">
-            <md-content ng-controller="sidenavController">
+        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="showSidenav()">
+            <md-content>
                 <ul class="sidenav-menu">
-                    <li ng-repeat="menu in menus2" layout="column">
+                    <li ng-repeat="menu in menus" layout="column">
                         <md-button flex ng-href="{{ menu.url }}">{{ menu.name }}</md-button>
                         <ul class="sidenav-submenu" ng-if="menu.type == 0">
                             <li ng-repeat="submenu in menu.submenus" layout="column">

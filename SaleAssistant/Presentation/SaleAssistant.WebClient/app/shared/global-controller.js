@@ -6,8 +6,32 @@
     globalController.$inject = ['$rootScope', '$scope', '$mdSidenav', '$mdUtil', '$location'];
 
     function globalController($rootScope, $scope, $mdSidenav, $mdUtil, $location) {
-        $scope.showSidenav = true;
-        $scope.toggleLeft = buildToggler('left');
+        $scope.toggleLeft = function() {
+            $mdSidenav('left').toggle();
+        }//buildToggler('left');
+
+        $scope.menus = [
+            {
+                name: 'Admin',
+                type: 0,
+                url: '#/',
+                submenus: [
+                    { name: 'Unit', url: '#/Unit' },
+                    { name: 'Product', url: '#/Product' },
+                    { name: 'Product Pricing', url: '#/ProductPricing' },
+                    //{ name: 'Inventory', url: '#/Inventory' },
+                    { name: 'Inventory Item', url: '#/InventoryItem' },
+                    { name: 'Customer', url: '#/Customer' },
+                    { name: 'Vendor', url: '#/Vendor' }
+                ]
+            },
+            {
+                name: 'SalesOrder',
+                type: 1,
+                url: '#/SalesOrder',
+                submenus: []
+            }
+        ];
 
         function buildToggler(navId) {
             var debounceFn = $mdUtil.debounce(function () {
@@ -16,11 +40,11 @@
             return debounceFn;
         }
 
-        $rootScope.$on('$locationChangeSuccess', function () {
+        $scope.showSidenav = function() {
             if ($location.path().toUpperCase() !== '/login'.toUpperCase())
-                $scope.showSidenav = true;
-            else
-                $scope.showSidenav = false;
-        });
+                return true;
+
+            return false;
+        }
     }
 })();

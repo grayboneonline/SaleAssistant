@@ -1,11 +1,11 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('saleAssistant').factory('sessionService', sessionService);
+    angular.module('saleAssistant').factory('saSessionService', saSessionService);
 
-    sessionService.$inject = ['$localStorage'];
+    saSessionService.$inject = ['$localStorage'];
 
-    function sessionService($localStorage) {
+    function saSessionService($localStorage) {
         var service = {
             getAccessToken: getAccessToken,
             setAccessToken: setAccessToken,

@@ -27,6 +27,9 @@
     text-transform: capitalize;
     font-weight: normal;
 }
+md-backdrop.md-sidenav-backdrop {
+    top: 0;
+}
 
 button.md-button.logo {
     color: #FFF;

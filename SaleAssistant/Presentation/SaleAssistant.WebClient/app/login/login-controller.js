@@ -3,19 +3,19 @@
 
     angular.module('saleAssistant').controller('loginController', loginController);
 
-    loginController.$inject = ['$scope', 'loginService', 'sessionService', '$location'];
+    loginController.$inject = ['$scope', 'loginService', 'saSessionService', '$location'];
 
-    function loginController($scope, loginService, sessionService, $location) {
+    function loginController($scope, loginService, saSessionService, $location) {
         $scope.errorMessage = '';
         $scope.login = function () {
             if (!$scope.loginForm.$valid)
                 return;
 
-            loginService.login($scope.username, $scope.password, sessionService.getClientId()).then(onSuccess, onError);
+            loginService.login($scope.username, $scope.password, saSessionService.getClientId()).then(onSuccess, onError);
 
             function onSuccess(data) {
-                sessionService.setAccessToken(data.access_token);
-                sessionService.setRefreshToken(data.refresh_token);
+                saSessionService.setAccessToken(data.access_token);
+                saSessionService.setRefreshToken(data.refresh_token);
                 $location.path('/');
             }
             function onError(data) {
