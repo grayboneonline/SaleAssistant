@@ -18,9 +18,9 @@ namespace SaleAssistant.Data
 
         //public System.Data.Entity.DbSet<InventoryItem> InventoryDetails { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Configurations.AddFromAssembly(typeof(Mapping.ProductMap).Assembly);
-        }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Configurations.AddFromAssembly(typeof(Mapping.ProductMap).Assembly);
+        //}
     }
 }

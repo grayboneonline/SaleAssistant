@@ -44,7 +44,7 @@ namespace SaleAssistant.Business
                 errors.Add(new ServiceError {FieldKey = "Id", Message = "", StatusCode = HttpStatusCode.NotFound});
             else
             {
-                vendor.IsTrash = isTrash;
+                //vendor.IsTrash = isTrash;
                 DA.Update(vendor);
                 DA.Save();
             }

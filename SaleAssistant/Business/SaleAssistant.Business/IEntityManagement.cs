@@ -19,7 +19,7 @@ namespace SaleAssistant.Business
     }
 
     public abstract class EntityManagement<TEntity, TModel, TDA> : IEntityManagement<TModel>
-        where TEntity : class, IEntity
+        where TEntity : class
         where TModel : IBusinessModel
         where TDA : IEntityDA<TEntity>
     {
@@ -33,10 +33,10 @@ namespace SaleAssistant.Business
         public virtual IList<TModel> GetAll(bool visible, bool relationVisible)
         {
             IEnumerable<TEntity> list = DA.GetAll();
-            if (visible)
-                list = list.Where(x => x.IsVisible);
-            if (relationVisible)
-                list = list.Where(x => x.IsRelationVisible);
+            //if (visible)
+            //    list = list.Where(x => x.IsVisible);
+            //if (relationVisible)
+            //    list = list.Where(x => x.IsRelationVisible);
 
             return list.MapTo<IList<TModel>>();
         }

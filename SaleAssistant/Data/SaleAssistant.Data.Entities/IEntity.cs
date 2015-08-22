@@ -1,28 +1,32 @@
-﻿using System;
+﻿//using System;
 
-namespace SaleAssistant.Data.Entities
-{
-    public interface IEntity
-    {
-        Guid Id { get; set; }
+//namespace SaleAssistant.Data.Entities
+//{
+//    public interface IEntity
+//    {
+//        int Cluster { get; set; }
 
-        bool IsVisible { get; }
+//        Guid Id { get; set; }
 
-        bool IsRelationVisible { get; }
-    }
+//        bool IsVisible { get; }
 
-    public class Entity : IEntity
-    {
-        public Guid Id { get; set; }
+//        bool IsRelationVisible { get; }
+//    }
 
-        public virtual bool IsVisible
-        {
-            get { return true; }
-        }
+//    public class Entity : IEntity
+//    {
+//        public int Cluster { get; set; }
 
-        public virtual bool IsRelationVisible
-        {
-            get { return true; }
-        }
-    }
-}
+//        public Guid Id { get; set; }
+
+//        public virtual bool IsVisible
+//        {
+//            get { return true; }
+//        }
+
+//        public virtual bool IsRelationVisible
+//        {
+//            get { return true; }
+//        }
+//    }
+//}

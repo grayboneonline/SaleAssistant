@@ -50,7 +50,7 @@ namespace SaleAssistant.Business
                 errors.Add(new ServiceError {FieldKey = "Id", Message = "", StatusCode = HttpStatusCode.NotFound});
             else
             {
-                product.IsTrash = isTrash;
+                //product.IsTrash = isTrash;
                 DA.Update(product);
                 DA.Save();
             }
@@ -59,8 +59,9 @@ namespace SaleAssistant.Business
 
         public IList<Product> GetProductNotExistsInInventory(Guid inventoryId)
         {
-            IList<Guid> productAddedIds = inventoryItemDA.GetByInventoryId(inventoryId).Select(x => x.ProductId).ToList();
-            return DA.GetAll().Where(x => !productAddedIds.Contains(x.Id)).MapTo<IList<Product>>();
+            return new Product[0];
+            //IList<Guid> productAddedIds = inventoryItemDA.GetByInventoryId(inventoryId).Select(x => x.ProductId).ToList();
+            //return DA.GetAll().Where(x => !productAddedIds.Contains(x.Id)).MapTo<IList<Product>>();
         }
     }
 }

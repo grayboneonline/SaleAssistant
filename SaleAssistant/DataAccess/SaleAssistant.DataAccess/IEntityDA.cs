@@ -17,7 +17,7 @@ namespace SaleAssistant.DataAccess
         void Save();
     }
 
-    public abstract class EntityDA<TEntity> : IEntityDA<TEntity> where TEntity : Entity
+    public abstract class EntityDA<TEntity> : IEntityDA<TEntity> where TEntity : class
     {
         private readonly SaleAssistantDbContext dbContext;
 

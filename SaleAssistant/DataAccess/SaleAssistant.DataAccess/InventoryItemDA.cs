@@ -19,7 +19,8 @@ namespace SaleAssistant.DataAccess
 
         public IList<InventoryItem> GetByInventoryId(Guid inventoryId)
         {
-            return DbSet.Where(x => x.InventoryId == inventoryId).ToList();
+            return new InventoryItem[0];
+            //return DbSet.Where(x => x.InventoryId == inventoryId).ToList();
         }
     }
 }

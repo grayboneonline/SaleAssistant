@@ -1,14 +1,28 @@
-﻿namespace SaleAssistant.Data.Entities
-{
-    public class Customer : Entity
-    {
-        public string Name { get; set; }
-        public Status Status { get; set; }
-        public bool IsTrash { get; set; }
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-        public override bool IsVisible
-        {
-            get { return !IsTrash && Status == Status.Active; }
-        }
+namespace SaleAssistant.Data.Entities
+{
+    public class Customer
+    {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        //[Required, Index]
+        //public Guid Id { get; set; }
+
+        [Required, MaxLength(200)]
+        public string Name { get; set; }
+
+        [Required]
+        public Status Status { get; set; }
+
+        [Required]
+        public bool IsDeleted { get; set; }
+
+        //public override bool IsVisible
+        //{
+        //    get { return !IsTrash && Status == Status.Active; }
+        //}
     }
 }

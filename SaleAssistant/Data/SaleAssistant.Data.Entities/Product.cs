@@ -1,25 +1,42 @@
-﻿using System;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SaleAssistant.Data.Entities
 {
-    public class Product : Entity
+    public class Product
     {
-        public string Name { get; set; }
-        public string Code { get; set; }
-        public Status Status { get; set; }
-        public Guid UnitId { get; set; }
-        public bool IsTrash{ get; set; }
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
+        //[Required, Index]
+        //public Guid Id { get; set; }
+
+        [Required, MaxLength(200)]
+        public string Name { get; set; }
+        
+        [MaxLength(50)]
+        public string Code { get; set; }
+
+        [Required]
+        public int UnitId { get; set; }
         public virtual Unit Unit { get; set; }
 
-        public override bool IsVisible
-        {
-            get { return !IsTrash && Status == Status.Active; }
-        }
+        [Required]
+        public Status Status { get; set; }
 
-        public override bool IsRelationVisible
-        {
-            get { return Unit.IsVisible; }
-        }
+        [Required]
+        public bool IsDeleted { get; set; }
+
+        
+
+        //public override bool IsVisible
+        //{
+        //    get { return !IsTrash && Status == Status.Active; }
+        //}
+
+        //public override bool IsRelationVisible
+        //{
+        //    get { return Unit.IsVisible; }
+        //}
     }
 }
