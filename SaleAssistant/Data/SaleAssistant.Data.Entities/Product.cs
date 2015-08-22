@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SaleAssistant.Data.Entities
 {
-    public class Product
+    public class Product : IEntity, IEntityWithStatus, IEntityWithIsDeleted
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

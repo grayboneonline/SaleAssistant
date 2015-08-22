@@ -41,11 +41,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IEntity.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="InventoryItem.cs" />
-    <Compile Include="Migrations\201508221459555_Initial.cs" />
-    <Compile Include="Migrations\201508221459555_Initial.Designer.cs">
-      <DependentUpon>201508221459555_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201508221618462_Initial.cs" />
+    <Compile Include="Migrations\201508221618462_Initial.Designer.cs">
+      <DependentUpon>201508221618462_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProductPricing.cs" />
@@ -62,8 +63,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201508221459555_Initial.resx">
-      <DependentUpon>201508221459555_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201508221618462_Initial.resx">
+      <DependentUpon>201508221618462_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

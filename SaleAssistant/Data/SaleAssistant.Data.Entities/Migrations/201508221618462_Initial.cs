@@ -64,7 +64,7 @@ namespace SaleAssistant.Data.Entities.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false, maxLength: 200),
+                        Name = c.String(nullable: false, maxLength: 50),
                         Status = c.Int(nullable: false),
                         IsDeleted = c.Boolean(nullable: false),
                     })

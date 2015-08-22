@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using SaleAssistant.Data;
@@ -10,14 +9,14 @@ namespace SaleAssistant.DataAccess
     public interface IEntityDA<TEntity>
     {
         IList<TEntity> GetAll();
-        TEntity GetById(Guid id);
+        TEntity GetById(int id);
         void Insert(TEntity item);
         void Delete(TEntity item);
         void Update(TEntity item);
         void Save();
     }
 
-    public abstract class EntityDA<TEntity> : IEntityDA<TEntity> where TEntity : class
+    public abstract class EntityDA<TEntity> : IEntityDA<TEntity> where TEntity : class, IEntity
     {
         private readonly SaleAssistantDbContext dbContext;
 
@@ -34,7 +33,7 @@ namespace SaleAssistant.DataAccess
             return DbSet.ToList();
         }
 
-        public TEntity GetById(Guid id)
+        public TEntity GetById(int id)
         {
             return DbSet.Find(id);
         }

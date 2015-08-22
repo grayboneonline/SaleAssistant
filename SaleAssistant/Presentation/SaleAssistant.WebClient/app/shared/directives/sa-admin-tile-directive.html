@@ -44,8 +44,8 @@
                     <md-icon ng-if="item.status != 1" md-svg-icon="assets/img/icons/visibility.svg" class="s24"></md-icon>
                 </md-button>
                 <md-button class="md-icon-button tile-header-button" aria-label="trash" ng-click="setTrashStatus(item)">
-                    <md-icon ng-if="item.isTrash != 1" md-svg-icon="assets/img/icons/delete.svg" class="s24"></md-icon>
-                    <md-icon ng-if="item.isTrash == 1" md-svg-icon="assets/img/icons/reply.svg" class="s24"></md-icon>
+                    <md-icon ng-if="item.isDeleted != 1" md-svg-icon="assets/img/icons/delete.svg" class="s24"></md-icon>
+                    <md-icon ng-if="item.isDeleted == 1" md-svg-icon="assets/img/icons/reply.svg" class="s24"></md-icon>
                 </md-button>
             </div>
             <div class="tile-item-edit" ng-if="item.isEditing" layout="column">

@@ -36,7 +36,7 @@
         }
 
         function setTrashStatus(id, status) {
-            return saHttpService.put(serviceBase + id + '/updatetrashstatus/' + status);
+            return saHttpService.put(serviceBase + id + '/updatedeletedstatus/' + status);
         }
         
         function update(id, item) {

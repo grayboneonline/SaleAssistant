@@ -5,7 +5,7 @@ namespace SaleAssistant.Business.Models
 {
     public class Product : IBusinessModel
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required, MaxLength(200)]
         public string Name { get; set; }
@@ -20,7 +20,7 @@ namespace SaleAssistant.Business.Models
         public Guid UnitId { get; set; }
 
         [Required]
-        public bool IsTrash { get; set; }
+        public bool IsDeleted { get; set; }
 
         public Unit Unit { get; set; }
     }

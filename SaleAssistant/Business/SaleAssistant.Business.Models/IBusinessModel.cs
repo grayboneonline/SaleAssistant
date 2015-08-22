@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace SaleAssistant.Business.Models
+﻿namespace SaleAssistant.Business.Models
 {
     public interface IBusinessModel
     {
-        Guid Id { get; set; }
+        int Id { get; set; }
     }
 }

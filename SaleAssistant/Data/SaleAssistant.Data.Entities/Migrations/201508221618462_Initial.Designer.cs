@@ -13,7 +13,7 @@ namespace SaleAssistant.Data.Entities.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201508221459555_Initial"; }
+            get { return "201508221618462_Initial"; }
         }
         
         string IMigrationMetadata.Source

@@ -22,8 +22,8 @@ namespace SaleAssistant.WebApi.Controllers
             return Ok(productPricingManagement.GetAll());
         }
 
-        [Route("{id:guid}", Name = "GetProductPricingById")]
-        public IHttpActionResult Get(Guid id)
+        [Route("{id:int}", Name = "GetProductPricingById")]
+        public IHttpActionResult Get(int id)
         {
             ProductPricing model = productPricingManagement.GetById(id);
 
@@ -35,8 +35,8 @@ namespace SaleAssistant.WebApi.Controllers
             return Ok(model);
         }
 
-        [Route("{id:guid}", Name = "UpdateProductPricing")]
-        public IHttpActionResult PutUpdate(Guid id, ProductPricing item)
+        [Route("{id:int}", Name = "UpdateProductPricing")]
+        public IHttpActionResult PutUpdate(int id, ProductPricing item)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

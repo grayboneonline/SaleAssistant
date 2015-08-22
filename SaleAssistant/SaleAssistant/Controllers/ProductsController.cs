@@ -22,18 +22,18 @@ namespace SaleAssistant.Controllers
         //}
 
         // GET: api/Products/5
-        [ResponseType(typeof(Product))]
-        public IHttpActionResult GetProduct(Guid id)
-        {
-            Product product = productManagement.GetById(id);
+        //[ResponseType(typeof(Product))]
+        //public IHttpActionResult GetProduct(Guid id)
+        //{
+        //    Product product = productManagement.GetById(id);
 
-            if (product == null)
-            {
-                return NotFound();
-            }
+        //    if (product == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return Ok(product);
-        }
+        //    return Ok(product);
+        //}
 
         //// PUT: api/Products/5
         //[ResponseType(typeof(void))]

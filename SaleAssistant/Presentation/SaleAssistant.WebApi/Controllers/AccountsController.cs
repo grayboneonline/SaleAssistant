@@ -16,7 +16,7 @@ namespace SaleAssistant.WebApi.Controllers
             return Ok(AppUserManager.Users.ToList().Select(u => ModelFactory.Create(u)));
         }
 
-        [Route("user/{id:guid}", Name = "GetUserById")]
+        [Route("user/{id:int}", Name = "GetUserById")]
         public async Task<IHttpActionResult> GetUser(string id)
         {
             var user = await AppUserManager.FindByIdAsync(id);
@@ -89,7 +89,7 @@ namespace SaleAssistant.WebApi.Controllers
             return Ok();
         }
 
-        //[Route("user/{id:guid}")]
+        //[Route("user/{id:int}")]
         //public async Task<IHttpActionResult> DeleteUser(string id)
         //{
 

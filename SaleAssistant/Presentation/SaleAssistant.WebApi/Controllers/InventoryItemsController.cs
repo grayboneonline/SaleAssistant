@@ -11,7 +11,7 @@ namespace SaleAssistant.WebApi.Controllers
     public class InventoryItemsController : BaseApiController
     {
         // working with only 1 inventory first
-        private static readonly Guid InventoryId = new Guid("3A8ED735-F959-4D67-9E57-F781B746E0E9");
+        private static readonly int InventoryId = 1;
 
         private readonly IInventoryItemManagement inventoryItemManagement;
         private readonly IProductManagement productManagement;
@@ -29,8 +29,8 @@ namespace SaleAssistant.WebApi.Controllers
             return Ok(inventoryItemManagement.GetAll(relationVisible: true));
         }
 
-        [Route("{id:guid}", Name = "GetInventoryItemById")]
-        public IHttpActionResult Get(Guid id)
+        [Route("{id:int}", Name = "GetInventoryItemById")]
+        public IHttpActionResult Get(int id)
         {
             InventoryItem model = inventoryItemManagement.GetById(id);
 
@@ -48,8 +48,8 @@ namespace SaleAssistant.WebApi.Controllers
             return Ok(productManagement.GetProductNotExistsInInventory(InventoryId));
         }
 
-        [Route("{id:guid}", Name = "UpdateInventoryItem")]
-        public IHttpActionResult PutUpdate(Guid id, InventoryItem item)
+        [Route("{id:int}", Name = "UpdateInventoryItem")]
+        public IHttpActionResult PutUpdate(int id, InventoryItem item)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -72,8 +72,8 @@ namespace SaleAssistant.WebApi.Controllers
             return Ok();
         }
 
-        [Route("{id:guid}", Name = "DeleteInventoryItem")]
-        public IHttpActionResult Delete(Guid id)
+        [Route("{id:int}", Name = "DeleteInventoryItem")]
+        public IHttpActionResult Delete(int id)
         {
             IList<ServiceError> errors = inventoryItemManagement.Delete(id);
             return HandleErrors(errors);

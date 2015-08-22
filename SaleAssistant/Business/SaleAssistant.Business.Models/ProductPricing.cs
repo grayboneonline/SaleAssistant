@@ -5,10 +5,10 @@ namespace SaleAssistant.Business.Models
 {
     public class ProductPricing : IBusinessModel
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        public Guid ProductId { get; set; }
+        public int ProductId { get; set; }
         public Product Product { get; set; }
 
         [Required]

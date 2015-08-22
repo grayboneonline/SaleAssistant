@@ -29,8 +29,8 @@ namespace SaleAssistant.WebApi.Controllers
             return Ok(productManagement.GetAll(true, true));
         }
 
-        [Route("{id:guid}", Name = "GetProductById")]
-        public IHttpActionResult Get(Guid id)
+        [Route("{id:int}", Name = "GetProductById")]
+        public IHttpActionResult Get(int id)
         {
             Product model = productManagement.GetById(id);
 
@@ -42,22 +42,22 @@ namespace SaleAssistant.WebApi.Controllers
             return Ok(model);
         }
 
-        [Route("{id:guid}/updatestatus/{status:int}", Name = "UpdateProductStatus")]
-        public IHttpActionResult PutUpdateStatus(Guid id, Status status)
+        [Route("{id:int}/updatestatus/{status:int}", Name = "UpdateProductStatus")]
+        public IHttpActionResult PutUpdateStatus(int id, Status status)
         {
             IList<ServiceError> errors = productManagement.SetStatus(id, status);
             return HandleErrors(errors);
         }
 
-        [Route("{id:guid}/updatetrashstatus/{isTrash:bool}", Name = "UpdateProductTrashStatus")]
-        public IHttpActionResult PutUpdateTrashStatus(Guid id, bool isTrash)
+        [Route("{id:int}/updatedeletedstatus/{isTrash:bool}", Name = "UpdateProductTrashStatus")]
+        public IHttpActionResult Putupdatedeletedstatus(int id, bool isTrash)
         {
-            IList<ServiceError> errors = productManagement.SetTrashStatus(id, isTrash);
+            IList<ServiceError> errors = productManagement.SetDeletedStatus(id, isTrash);
             return HandleErrors(errors);
         }
 
-        [Route("{id:guid}", Name = "UpdateProduct")]
-        public IHttpActionResult PutUpdate(Guid id, Product item)
+        [Route("{id:int}", Name = "UpdateProduct")]
+        public IHttpActionResult PutUpdate(int id, Product item)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

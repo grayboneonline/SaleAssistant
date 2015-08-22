@@ -37,19 +37,19 @@
             }
 
             $scope.trashFilter = function (item) {
-                return item.isTrash === $scope.inTrash;
+                return item.isDeleted === $scope.inTrash;
             }
 
             $scope.noItems = function () {
                 if ($scope.inTrash) {
                     for (var i in $scope.items) {
-                        if ($scope.items[i].isTrash)
+                        if ($scope.items[i].isDeleted)
                             return false;
                     }
                     return true;
                 } else {
                     for (var i in $scope.items) {
-                        if (!$scope.items[i].isTrash)
+                        if (!$scope.items[i].isDeleted)
                             return false;
                     }
                     return true;
@@ -95,7 +95,7 @@
             }
 
             $scope.setTrashStatus = function (item) {
-                $scope.setTrashStatusPromise(item.id, !item.isTrash).then(onSuccess, onError);
+                $scope.setTrashStatusPromise(item.id, !item.isDeleted).then(onSuccess, onError);
 
                 function onSuccess(data) {
                     $scope.init();

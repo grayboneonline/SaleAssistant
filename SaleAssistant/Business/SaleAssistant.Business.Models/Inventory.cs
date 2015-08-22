@@ -1,11 +1,10 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SaleAssistant.Business.Models
 {
     public class Inventory : IBusinessModel
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required, MaxLength(200)]
         public string Name { get; set; }
@@ -14,6 +13,6 @@ namespace SaleAssistant.Business.Models
         public Status Status { get; set; }
 
         [Required]
-        public bool IsTrash { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }
