@@ -8,9 +8,6 @@ namespace SaleAssistant.Data.Entities
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        //[Required, Index]
-        //public Guid Id { get; set; }
-
         [Required, MaxLength(200)]
         public string Name { get; set; }
 
@@ -19,10 +16,5 @@ namespace SaleAssistant.Data.Entities
 
         [Required]
         public bool IsDeleted { get; set; }
-
-        //public override bool IsVisible
-        //{
-        //    get { return !IsTrash && Status == Status.Active; }
-        //}
     }
 }

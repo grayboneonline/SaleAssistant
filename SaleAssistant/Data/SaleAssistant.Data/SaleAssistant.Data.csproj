@@ -54,10 +54,6 @@
       <Project>{243788c7-491b-4556-8697-3ffb0fe1e454}</Project>
       <Name>SaleAssistant.Data.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SaleAssistant.Data.Mapping\SaleAssistant.Data.Mapping.csproj">
-      <Project>{00ce8683-5541-476a-8059-0b1d31a84b89}</Project>
-      <Name>SaleAssistant.Data.Mapping</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -9,9 +9,6 @@ namespace SaleAssistant.Data.Entities
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        //[Required, Index]
-        //public Guid Id { get; set; }
-
         [Required]
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
@@ -27,13 +24,6 @@ namespace SaleAssistant.Data.Entities
 
         [Required]
         public DateTime CreatedDate { get; set; }
-
-        
-
-        //public override bool IsRelationVisible
-        //{
-        //    get { return Product.IsVisible; }
-        //}
     }
 
     public enum PricingType

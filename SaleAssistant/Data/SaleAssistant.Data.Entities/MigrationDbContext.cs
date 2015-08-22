@@ -1,6 +1,5 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Reflection;
 
 namespace SaleAssistant.Data.Entities
 {

@@ -8,9 +8,6 @@ namespace SaleAssistant.Data.Entities
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        //[Required, Index]
-        //public Guid Id { get; set; }
-
         [Required]
         public int InventoryId { get; set; }
         public virtual Inventory Inventory { get; set; }
@@ -21,10 +18,5 @@ namespace SaleAssistant.Data.Entities
 
         [Required]
         public decimal Quantity { get; set; }
-
-        //public override bool IsRelationVisible
-        //{
-        //    get { return Inventory.IsVisible && Product.IsVisible && Product.IsRelationVisible; }
-        //}
     }
 }
